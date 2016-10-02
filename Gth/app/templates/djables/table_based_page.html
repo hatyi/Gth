@@ -1,0 +1,6 @@
+{% extends model.extends %}
+
+{% block current_content %}
+{% load djables %}
+{% djable model request %}
+{% endblock %}

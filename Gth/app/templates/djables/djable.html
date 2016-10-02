@@ -1,0 +1,111 @@
+{% load djables %}
+{% load staticfiles %}
+<div class="container-fluid m-l-10 m-r-10">
+    {% if model.filterable or model.actions %}
+    <div class="row m-b-10 m-t-10">
+        {% if model.filterable %}
+        <input class="input-sm djable-search-input" type="text">
+        <span class="search-button m-l-5"><i class="fa fa-search"></i></span>
+        {% if model.special_filters %}
+        <span class="search-button m-l-5"><i id="djable_special_toggle" class="fa fa-filter" data-toggle="modal" data-target="#djable_special_filters"></i></span>
+        {% endif %}
+        {% endif %}
+        {% for action in model.action_buttons %}
+        <div class="btn btn-alt m-b-10 pull-right m-l-10"><a href="{{action.href}}">{{action.value}}</a></div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if model.special_filterable %}
+    <div class="modal fade" id="djable_special_filters" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="#closeModalButton">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Special filters</h4>
+                </div>
+                <div class="modal-body">
+                    {% for s in model.special_filters %}
+                    <div class="m-t-5">
+                        {% djable_filter s %}
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-alt" onclick="specialResetClick()" data-dismiss="modal">Reset</button>
+                    <button type="button" class="btn btn-primary" onclick="filterTableRequest()" data-dismiss="modal">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="table-responsive overflow">
+            <table class="table">
+                <thead>
+                <tr>
+                    {% for column in model.columns %}
+                    {% if column.orderable %}
+                    <th class="table-header table-header-orderable" djable-colname="{{column.visible_name}}" djable-ordering-name="{{column.column_name}}"></th>
+                    {% else %}
+                    <th class="table-header" djable-colname="{{column.visible_name}}" djable-ordering-name="{{column.column_name}}"></th>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody id="djable_body" class="hidden">
+                {% for current_page in paged_set %}
+                {% for item in current_page.items %}
+                <tr id="djable_{{item.id}}" class="table-row paged-table-row" djable-page="{{ current_page.page }}">
+                    {% for cell in item.cells %}
+                    <td>
+                        {% djable_cell cell %}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="hidden m-t-20" id="djable_loading_body">
+                <div class="text-center">
+                    {% if model.activity_indicator_dark %}
+                    <img src="{% static 'djables/activity-indicator-dark.gif' %}" alt="loading"/>
+                    {% else %}
+                    <img src="{% static 'djables/activity-indicator-light.gif' %}" alt="loading"/>
+                    {% endif %}
+                </div>
+                <div class="text-center">
+                    <p>Processing...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if page_count > 1 %}
+    <div class="row">
+        <nav aria-label="Page navigation">
+            <ul class="pagination table-pagination" id="table_pagination">
+                <li>
+                    <a aria-label="Previous" onclick='changePage("prev")'>
+                        <span aria-hidden="true"><i class="glyphicon glyphicon-backward"></i></span>
+                    </a>
+                </li>
+                {% for current_page in paged_set %}
+                <li id="page-button-{{current_page.page}}" class="table-page-button"><a onclick='changePage("{{current_page.page}}")'>{{current_page.page}}</a></li>
+                {% endfor %}
+                <li>
+                    <a aria-label="Next" onclick='changePage("next")'>
+                        <span aria-hidden="true"><i class="glyphicon glyphicon-forward"></i></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    {% endif %}
+</div>
+<link rel="stylesheet" type="text/css" href="{% static 'djables/djables.css' %}" />
+<script src="{% static 'djables/djables.js' %}"></script>
+<script>
+    initPages("{{ page_count }}", "{{ model.items_per_page }}", "{{ model.visible_page_button_count }}", "{{ model.name }}");
+</script>

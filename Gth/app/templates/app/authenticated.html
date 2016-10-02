@@ -1,0 +1,115 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="page-header navbar navbar-fixed-top">
+    <div class="page-header-inner">
+        <div class="page-logo text-center">
+            <h3 style="color: white; display: inline-block;">Gth</h3>
+            <div class="menu-toggler sidebar-toggler"></div>
+        </div>
+        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+        <div class="page-actions">
+            <div class="btn-group">
+                <button type="button" class="btn btn-circle btn-outline red dropdown-toggle" data-toggle="dropdown">
+
+                    <i class="fa fa-plus"></i> <span class="hidden-xs-inline">New </span> <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="/users/new">
+                            <i class="fa fa-user-plus"></i> New User
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/buses/new">
+                            <i class="fa fa-bus"></i> New Bus
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/buses/services/new">
+                            <i class="fa fa-calendar"></i> New Bus Service Date
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/models/new">
+                            <i class="fa fa-list-alt"></i> New Report Model
+                        </a>
+                    </li>
+                    <li class="divider"> </li>
+                    <li>
+                        <a href="/reports">
+                            <i class="fa fa-files-o"></i> Reports
+                            <span class="badge badge-success">4</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-top">
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <h3>Welcome {{ request.user.username }}!</h3>
+                    </li>
+                    <li class="dropdown dropdown-extended quick-sidebar-toggler">
+                        <span class="sr-only">Toggle Quick Sidebar</span>
+                        <i class="icon-logout" onclick="window.location = '/logout'"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"> </div>
+<div class="page-container">
+    <div class="page-sidebar-wrapper">
+        <div class="page-sidebar navbar-collapse collapse">
+            <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                <li class="nav-item {{page.dashboard}}">
+                    <a href="/" class="nav-link nav-toggle">
+                        <i class="fa fa-home"></i>
+                        <span class="title">Dashboard</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                <li class="nav-item {{page.users}}">
+                    <a href="/users" class="nav-link nav-toggle">
+                        <i class="fa fa-users"></i>
+                        <span class="title">Users</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                <li class="nav-item {{page.buses}}">
+                    <a href="/buses" class="nav-link nav-toggle">
+                        <i class="fa fa-bus"></i>
+                        <span class="title">Buses</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                <li class="nav-item {{page.report_models}}">
+                    <a href="/models" class="nav-link nav-toggle">
+                        <i class="fa fa-list-ul"></i>
+                        <span class="title">Report Models</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                <li class="nav-item {{page.reports}}">
+                    <a href="/reports" class="nav-link nav-toggle">
+                        <i class="icon-docs"></i>
+                        <span class="title">Reports</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            
+            {% block current_content %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

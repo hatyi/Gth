@@ -1,42 +1,31 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿@media screen and (max-width: 768px) {
+    .hidden-xs-inline {
+        display: none !important;
+    }
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+@media screen and (min-width: 768px) {
+    .hidden-xs-inline {
+        display: inline-block !important;
+    }
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.btn-alt {
+    border: 1px solid #17C4BB !important;
+    
+}
+.btn-alt>a,
+.btn-alt>a:hover,
+.btn-alt>a:focus {
+    color: #666 !important;
 }
 
-/* styles for validation helpers */
-.field-validation-error {
-    color: #b94a48;
+.panel-default>.panel-heading,
+.table-header {
+    background-color: #26344B;
 }
-
-.field-validation-valid {
-    display: none;
-}
-
-input.input-validation-error {
-    border: 1px solid #b94a48;
-}
-
-input[type="checkbox"].input-validation-error {
-    border: 0 none;
-}
-
-.validation-summary-errors {
-    color: #b94a48;
-}
-
-.validation-summary-valid {
-    display: none;
+.panel-default>.panel-heading>h3,
+.panel-default>.panel-heading>h2,
+.table-header {
+    color: white;
 }

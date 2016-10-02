@@ -1,0 +1,29 @@
+﻿.table-header-orderable, 
+.table-pagination > li > a,
+.table-pagination > li > a:hover,
+.table-pagination > li > a:focus,
+.table-pagination >.active>a,
+.table-pagination >.active>a:hover,
+.table-pagination >.active>a:focus,
+.search-button {
+    cursor: pointer;
+}
+.table-header:before {
+    content: attr(djable-colname);
+}
+.table-header.asc:before {
+    content: attr(djable-colname) ' ▲';
+}
+.table-header.desc:before {
+    content: attr(djable-colname) ' ▼';
+}
+.display-inline {
+    display: inline;
+}
+
+.djable-filter-inactive {
+    color: inherit;
+}
+.djable-filter-active {
+    color: rgb(159,79,68);
+}

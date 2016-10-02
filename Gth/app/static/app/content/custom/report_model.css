@@ -1,0 +1,30 @@
+﻿.panel-button {
+    margin-top: -1px;
+    margin-right: 5px;
+    float: right;
+}
+.panel-button>a {
+    color: white;
+}
+.panel-title {
+    margin-bottom: 6px;
+    margin-top: 5px;
+}
+#pages-outer-container {
+    overflow-x: scroll;
+    width: 100%;
+}
+#pages-inner-container {
+    width: 200%;
+    white-space: nowrap;
+}
+.btn-primary-white>a {
+    color: white;
+}
+.page-panel {
+    width: 25%;
+    display: inline-block;
+}
+.report-page {
+    margin-top: 20px;
+}

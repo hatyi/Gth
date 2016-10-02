@@ -1,0 +1,17 @@
+{% load widget_tweaks %}
+<div class="row p-t-10 p-b-15">
+    <div class="col-md-8 col-lg-6">
+        {% for x in fields %}
+        {% if not x.hidden %}
+        <p class="m-b-0 m-t-10">{{ x.field.label_tag }}</p>
+        {% render_field x.field class+="form-control" %}
+        {{ x.field.errors }}
+        {% if x.field.help_text %}
+        <p class="help">{{ x.field.help_text|safe }}</p>
+        {% endif %}
+        {% else %}
+        {% render_field x.field class+="hidden" %}
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>

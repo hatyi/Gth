@@ -1,0 +1,29 @@
+{%if cell.is_simple %}
+
+{% if not cell.href %}
+{{cell.value}}
+{% elif not cell.toop_top %}
+<a href="{{cell.href}}">{{cell.value}}</a>
+{% else %}
+<a href="{{cell.href}}" data-toggle="tooltip" title="{{cell.tool_tip}}">{{cell.value}}</a>
+{% endif %}
+
+
+
+
+
+{% else %}
+
+
+
+{%for action in cell.actions %}
+{% if action.tool_tip %}
+<a href="{{action.href}}" data-toggle="tooltip" title="{{action.tool_tip}}"><i class="fa fa-{{action.value}}"></i></a>
+{% else %}
+<a href="{{action.href}}"><i class="fa fa-{{action.value}}"></i></a>
+{% endif %}
+{%endfor%}
+
+
+
+{% endif %}

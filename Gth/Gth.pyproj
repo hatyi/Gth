@@ -17,7 +17,7 @@
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
-    <LaunchProvider>Django launcher</LaunchProvider>
+    <LaunchProvider>Web launcher</LaunchProvider>
     <OutputPath>.</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -29,12 +29,37 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="app\admin.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\forms.py" />
+    <Compile Include="app\gth\custom_djable_models.py" />
+    <Compile Include="app\gth\edit_report.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\gth\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\models.py" />
+    <Compile Include="app\templatetags\custom_form.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\templatetags\djables.py" />
     <Compile Include="app\tests.py" />
+    <Compile Include="app\managers.py" />
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
     <Compile Include="app\migrations\__init__.py" />
+    <Compile Include="djables\cell.py" />
+    <Compile Include="djables\column.py" />
+    <Compile Include="djables\djables_manager.py" />
+    <Compile Include="djables\filter.py" />
+    <Compile Include="djables\helpers.py" />
+    <Compile Include="djables\models.py" />
+    <Compile Include="djables\special_filters.py" />
+    <Compile Include="djables\__init__.py" />
+    <Compile Include="Gth\middleware\navbar.py" />
+    <Compile Include="Gth\middleware\__init__.py" />
     <Compile Include="manage.py" />
     <Compile Include="Gth\__init__.py" />
     <Compile Include="Gth\settings.py" />
@@ -44,51 +69,236 @@
   <ItemGroup>
     <Folder Include="app\" />
     <Folder Include="app\migrations\" />
+    <Folder Include="app\gth\" />
     <Folder Include="app\static\" />
     <Folder Include="app\static\app\" />
     <Folder Include="app\static\app\content\" />
+    <Folder Include="app\static\app\content\base\" />
+    <Folder Include="app\static\app\content\custom\" />
+    <Folder Include="app\static\app\content\plugins\" />
     <Folder Include="app\static\app\fonts\" />
+    <Folder Include="app\static\app\img\" />
+    <Folder Include="app\static\app\img\icons\" />
     <Folder Include="app\static\app\scripts\" />
+    <Folder Include="app\static\app\scripts\base\" />
+    <Folder Include="app\static\app\scripts\custom\" />
+    <Folder Include="app\static\app\scripts\plugins\" />
+    <Folder Include="app\static\app\scripts\plugins\localization\" />
+    <Folder Include="app\static\djables\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
+    <Folder Include="app\templates\djables\" />
+    <Folder Include="app\templatetags\" />
     <Folder Include="Gth\" />
+    <Folder Include="djables\" />
+    <Folder Include="Gth\middleware\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\static\app\content\base\blue.css" />
+    <Content Include="app\static\app\content\base\bootstrap-switch.min.css" />
+    <Content Include="app\static\app\content\base\components.min.css" />
+    <Content Include="app\static\app\content\base\custom.css" />
+    <Content Include="app\static\app\content\base\font-awesome.min.css" />
+    <Content Include="app\static\app\content\base\layout.css" />
+    <Content Include="app\static\app\content\base\plugins.min.css" />
+    <Content Include="app\static\app\content\base\simple-line-icons.min.css" />
+    <Content Include="app\static\app\content\custom\login.min.css" />
+    <Content Include="app\static\app\content\custom\report_model.css" />
+    <Content Include="app\static\app\content\plugins\font-awesome.min.css" />
+    <Content Include="app\static\app\content\plugins\generics.css" />
+    <Content Include="app\static\app\content\plugins\select2-bootstrap.min.css" />
+    <Content Include="app\static\app\content\plugins\select2.min.css" />
+    <Content Include="app\static\app\fonts\fontawesome-webfont.eot" />
+    <Content Include="app\static\app\fonts\fontawesome-webfont.svg" />
+    <Content Include="app\static\app\fonts\fontawesome-webfont.ttf" />
+    <Content Include="app\static\app\fonts\fontawesome-webfont.woff" />
+    <Content Include="app\static\app\fonts\fontawesome-webfont.woff2" />
+    <Content Include="app\static\app\fonts\FontAwesome.otf" />
+    <Content Include="app\static\app\fonts\Simple-Line-Icons.dev.svg" />
+    <Content Include="app\static\app\fonts\Simple-Line-Icons.eot" />
+    <Content Include="app\static\app\fonts\Simple-Line-Icons.svg" />
+    <Content Include="app\static\app\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="app\static\app\fonts\Simple-Line-Icons.woff" />
+    <Content Include="app\static\app\img\icons\accordion-plusminus.png" />
+    <Content Include="app\static\app\img\icons\ajax-loading.gif" />
+    <Content Include="app\static\app\img\icons\ajax-modal-loading.gif" />
+    <Content Include="app\static\app\img\icons\datatable-row-openclose.png" />
+    <Content Include="app\static\app\img\icons\input-spinner.gif" />
+    <Content Include="app\static\app\img\icons\loading-spinner-blue.gif" />
+    <Content Include="app\static\app\img\icons\loading-spinner-default.gif" />
+    <Content Include="app\static\app\img\icons\loading-spinner-grey.gif" />
+    <Content Include="app\static\app\img\icons\loading.gif" />
+    <Content Include="app\static\app\img\icons\overlay-icon.png" />
+    <Content Include="app\static\app\img\icons\portlet-collapse-icon-white.png" />
+    <Content Include="app\static\app\img\icons\portlet-collapse-icon.png" />
+    <Content Include="app\static\app\img\icons\portlet-config-icon-white.png" />
+    <Content Include="app\static\app\img\icons\portlet-config-icon.png" />
+    <Content Include="app\static\app\img\icons\portlet-expand-icon-white.png" />
+    <Content Include="app\static\app\img\icons\portlet-expand-icon.png" />
+    <Content Include="app\static\app\img\icons\portlet-reload-icon-white.png" />
+    <Content Include="app\static\app\img\icons\portlet-reload-icon.png" />
+    <Content Include="app\static\app\img\icons\portlet-remove-icon-white.png" />
+    <Content Include="app\static\app\img\icons\portlet-remove-icon.png" />
+    <Content Include="app\static\app\img\icons\remove-icon-small.png" />
+    <Content Include="app\static\app\img\icons\sidebar-toggler-inverse.png" />
+    <Content Include="app\static\app\img\icons\sidebar-toggler.png" />
+    <Content Include="app\static\app\img\icons\syncfusion-icons-white.png" />
+    <Content Include="app\static\app\img\icons\syncfusion-icons.png" />
+    <Content Include="app\static\app\scripts\custom\report_model.js" />
+    <Content Include="app\static\app\scripts\plugins\additional-methods.min.js" />
+    <Content Include="app\static\app\scripts\plugins\app.min.js" />
+    <Content Include="app\static\app\scripts\plugins\jquery.blockui.min.js" />
+    <Content Include="app\static\app\scripts\plugins\jquery.slimscroll.min.js" />
+    <Content Include="app\static\app\scripts\plugins\jquery.form.min.js" />
+    <Content Include="app\static\app\scripts\plugins\jquery.validate.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ar.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ar.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_bg.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_bg.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_bn_BD.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_bn_BD.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ca.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ca.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_cs.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_cs.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_da.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_da.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_de.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_de.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_el.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_el.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_es.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_es.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_es_AR.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_es_AR.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_es_PE.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_es_PE.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_et.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_et.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_eu.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_eu.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_fa.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_fa.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_fi.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_fi.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_fr.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_fr.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ge.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ge.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_gl.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_gl.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_he.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_he.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_hr.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_hr.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_hu.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_hu.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_hy_AM.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_hy_AM.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_id.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_id.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_is.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_is.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_it.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_it.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ja.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ja.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ka.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ka.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_kk.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_kk.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ko.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ko.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_lt.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_lt.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_lv.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_lv.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_my.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_my.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_nl.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_nl.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_no.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_no.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_pl.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_pl.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_pt_BR.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_pt_BR.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_pt_PT.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_pt_PT.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ro.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ro.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ru.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_ru.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_si.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_si.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_sk.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_sk.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_sl.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_sl.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_sr.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_sr.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_sr_lat.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_sr_lat.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_sv.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_sv.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_th.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_th.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_tj.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_tj.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_tr.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_tr.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_uk.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_uk.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_vi.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_vi.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_zh.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_zh.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_zh_TW.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\messages_zh_TW.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\methods_de.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\methods_de.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\methods_es_CL.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\methods_es_CL.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\methods_fi.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\methods_fi.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\methods_nl.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\methods_nl.min.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\methods_pt.js" />
+    <Content Include="app\static\app\scripts\plugins\localization\methods_pt.min.js" />
+    <Content Include="app\static\app\scripts\custom\login.min.js" />
+    <Content Include="app\static\app\scripts\plugins\select2.full.min.js" />
+    <Content Include="app\static\djables\activity-indicator-dark.gif" />
+    <Content Include="app\static\djables\activity-indicator-light.gif" />
+    <Content Include="app\static\djables\djables.css" />
+    <Content Include="app\static\djables\djables.js" />
+    <Content Include="app\templates\app\authenticated.html" />
+    <Content Include="app\templates\app\custom_form.html" />
+    <Content Include="app\templates\app\edit_model.html" />
+    <Content Include="app\templates\app\login.html" />
+    <Content Include="app\templates\djables\djable.html" />
+    <Content Include="app\templates\djables\djable_cell.html" />
+    <Content Include="app\templates\djables\djable_spec_filter.html" />
+    <Content Include="app\templates\djables\form_based_page.html" />
+    <Content Include="app\templates\djables\table_based_page.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
-    <Content Include="app\static\app\content\bootstrap.css" />
-    <Content Include="app\static\app\content\bootstrap.min.css" />
+    <Content Include="app\static\app\content\base\bootstrap.min.css" />
     <Content Include="app\static\app\content\site.css" />
     <Content Include="app\static\app\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="app\static\app\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="app\static\app\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="app\static\app\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="app\static\app\scripts\bootstrap.js" />
-    <Content Include="app\static\app\scripts\bootstrap.min.js" />
-    <Content Include="app\static\app\scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="app\static\app\scripts\jquery-1.10.2.js" />
-    <Content Include="app\static\app\scripts\jquery-1.10.2.min.js" />
-    <Content Include="app\static\app\scripts\jquery-1.10.2.min.map" />
-    <Content Include="app\static\app\scripts\jquery.validate-vsdoc.js" />
-    <Content Include="app\static\app\scripts\jquery.validate.js" />
-    <Content Include="app\static\app\scripts\jquery.validate.min.js" />
-    <Content Include="app\static\app\scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="app\static\app\scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="app\static\app\scripts\modernizr-2.6.2.js" />
-    <Content Include="app\static\app\scripts\respond.js" />
-    <Content Include="app\static\app\scripts\respond.min.js" />
-    <Content Include="app\static\app\scripts\_references.js" />
-    <Content Include="app\templates\app\about.html" />
-    <Content Include="app\templates\app\contact.html" />
+    <Content Include="app\static\app\scripts\base\bootstrap.min.js" />
+    <Content Include="app\static\app\scripts\base\jquery-1.10.2.intellisense.js" />
+    <Content Include="app\static\app\scripts\base\jquery-1.10.2.min.js" />
+    <Content Include="app\static\app\scripts\base\jquery-1.10.2.min.map" />
+    <Content Include="app\static\app\scripts\base\jquery.validate-vsdoc.js" />
+    <Content Include="app\static\app\scripts\base\jquery.validate.min.js" />
+    <Content Include="app\static\app\scripts\base\jquery.validate.unobtrusive.min.js" />
+    <Content Include="app\static\app\scripts\base\modernizr-2.6.2.js" />
+    <Content Include="app\static\app\scripts\base\respond.min.js" />
     <Content Include="app\templates\app\index.html" />
     <Content Include="app\templates\app\layout.html" />
-    <Content Include="app\templates\app\login.html" />
-    <Content Include="app\templates\app\loginpartial.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="readme.mht">
-      <SubType>WebBrowser</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

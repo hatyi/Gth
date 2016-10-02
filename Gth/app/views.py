@@ -1,46 +1,53 @@
-"""
-Definition of views.
-"""
+from django.shortcuts import render, get_object_or_404
+from django.http.response import HttpResponseRedirect, HttpResponse, Http404, JsonResponse
+from django.contrib.auth import logout, login, authenticate
+from django.contrib.auth.decorators import login_required
+from app.models import Profile, Report
+from djables import djables_manager as manager
+from django.db.models.query_utils import Q
+from app.forms import ReportForm, PageForm
+from app.gth.edit_report import save_report, get_report
 
-from django.shortcuts import render
-from django.http import HttpRequest
-from django.template import RequestContext
-from datetime import datetime
-
+@login_required
 def home(request):
-    """Renders the home page."""
-    assert isinstance(request, HttpRequest)
     return render(
         request,
         'app/index.html',
         {
-            'title':'Home Page',
-            'year':datetime.now().year,
+            
         }
     )
 
-def contact(request):
-    """Renders the contact page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/contact.html',
-        {
-            'title':'Contact',
-            'message':'Your contact page.',
-            'year':datetime.now().year,
-        }
-    )
+def user_login(request):
+    redirect_to_next = request.GET.get('next', '/')
+    if request.method != "POST":
+        return render(request, 'app/login.html', {'redirect_to': redirect_to_next})
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    user = authenticate(username=username, password=password)
 
-def about(request):
-    """Renders the about page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/about.html',
-        {
-            'title':'About',
-            'message':'Your application description page.',
-            'year':datetime.now().year,
-        }
-    )
+    if (user and user.profile and user.is_active and user.profile.role == Profile.ADMIN):
+        login(request, user)
+        return HttpResponseRedirect(redirect_to_next)
+    return render(request, 'app/login.html', {
+        'redirect_to': redirect_to_next,
+        'error': 'Invalid credentials.',
+        'username': username
+        })
+
+
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/login')
+
+
+def edit_report_model(request, method):
+    if request.method == "POST":
+        success = save_report(request.POST, method)
+        exit = request.GET.get('exit', False)
+        if exit and success:
+            return HttpResponseRedirect('/models')
+        #additional logic here for no success with forms
+        return JsonResponse({'succes':success})
+    data = get_report(request.GET, method)
+    return render(request, 'app/edit_model.html', data)

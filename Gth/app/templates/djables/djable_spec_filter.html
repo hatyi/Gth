@@ -1,0 +1,31 @@
+{% if filter.title %}
+<h4><b>
+    {{filter.title}}
+</b></h4>
+{% endif %}
+{% if type == 'DjablesText' %}
+<input id="__{{name}}__dc" class="input-sm djable-special-input djable-input-text" type="text">
+{%elif type == 'DjablesBetween'%}
+<p class="display-inline"> between </p>
+<input id="__{{name}}__gt" class="input-sm display-inline djable-special-input djable-input-{{filter.type}}" type="text">
+<p class="display-inline">
+    and
+</p>
+<input id="__{{name}}__lt" class="input-sm display-inline djable-special-input djable-input-{{filter.type}}" type="text">
+<p class="display-inline"><em>
+    {% if filter.type == 'date' %}
+    (yyyy/mm/dd)
+    {% elif filter.type == 'datetime' %}
+    (yyyy/mm/dd hh:MM)
+    {% endif %}
+</em></p>
+{%elif type == 'DjablesChoices'%}
+<nav aria-label="choices">
+    <ul class="pagination m-t-0">
+        <li class="active djable-special-choice" djable-choice-value="-" djable-choice-key="__{{name}}__dc"><a>All</a></li>
+        {% for k,item in filter.choices.items %}
+        <li class="djable-special-choice" djable-choice-value="{{item.val}}" djable-choice-key="__{{name}}__dc"><a>{{item.name}}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
+{%endif%}
