@@ -1,6 +1,7 @@
 {% extends "app/authenticated.html" %}
 {% load custom_form %}
 {% load widget_tweaks %}
+{% load static %}
 {% block current_content %}
 
 <div class="btn btn-alt m-b-10 pull-right m-l-10">
@@ -10,7 +11,7 @@
     <a data-toggle="modal" data-target="#basic_info_modal">Edit Basic Info</a>
 </div>
 
-<h4 id="report_title" class="m-b-20">REPLACE THIS TITLE</h4>
+<h4 id="report_title" class="m-b-20">{{report_instance.title}}</h4>
 <div class="modal fade" id="basic_info_modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -22,7 +23,7 @@
             <div class="modal-body">
                 <form id="basic_info_form" method="POST">
                     {% csrf_token %}
-                    {% render_custom_form report_form %}
+                    {% render_custom_form report_form "report" %}
                 </form>
             </div>
             <div class="modal-footer">
@@ -36,69 +37,67 @@
 <div id="pages_panel" class="panel panel-default">
     <div class="panel-heading">
         <div class="btn btn-success btn-sm panel-button">
-            <a>
+            <a id="add_page_button">
                 <i class="fa fa-plus"></i>
             </a>
         </div>
         <h3 class="panel-title uppercase">Pages</h3>
     </div>
     <div class="panel-body">
+        <div id="loading_body" class="hidden">
+            <div class="text-center m-t-20">
+                <img src="{% static 'djables/activity-indicator-dark.gif' %}" alt="loading"/>
+            </div>
+            <div class="text-center">
+                <p>Processing...</p>
+            </div>
+        </div>
+        <div id="page_body">
+            <nav aria-label="Page navigation">
+            <ul class="pagination table-pagination" id="pagination_top">
+                <li>
+                    <a aria-label="Previous" onclick='changePage("prev")'>
+                        <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
+                    </a>
+                </li>
+                {% for page in pages %}
+                <li class="table-page-button page-button-{{page.page_number}}">
+                    <a onclick='changePage("{{page.page_number}}")'>{{page.page_number}}</a>
+                </li>
+                {% endfor %}
+                <li>
+                    <a aria-label="Next" onclick='changePage("next")'>
+                        <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
         <div id="pages-outer-container">
             <div id="pages-inner-container">
                 {% for page in pages %}
-                <div class="page-panel">
-                    <div class="panel panel-default report-page" page="{{page.page_number}}">
-                        <div class="panel-heading">
-                            <div class="btn btn-danger btn-sm panel-button">
-                                <a>
-                                    <i class="fa fa-times"></i>
-                                </a>
-                            </div>
-                            <div class="btn btn-info btn-sm panel-button">
-                                <a>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </div>
-                            <div class="btn btn-info btn-sm panel-button">
-                                <a>
-                                    <i class="fa fa-angle-left"></i>
-                                </a>
-                            </div>
-                            <h2 class="panel-title">{{page.page_instance.title}}</h2>
-                        </div>
-                        <div class="panel-body">
-                            <form method="post">
-                                {% csrf_token %}
-                                {% render_custom_form page.page_form %}
-                            </form>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="btn-group pull-right">
-                                        <button type="button" class="btn btn-sm btn-success dropdown-toggle panel-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                        <ul class="dropdown-menu pull-right">
-                                            <li>
-                                                <a><i class="fa fa-object-group"></i> Add group</a>
-                                            </li>
-                                            <li>
-                                                <a><i class="fa fa-keyboard-o"></i> Add input</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <h3 class="panel-title">Inputs</h3>
-                                </div>
-                                <div class="panel-body">
-                                    {% for input in page.inputs %}
-                                    {{input.input_instance.title}}<!--TODO-->
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% render_custom_page page.page_number page.page_instance %}
                 {% endfor %}
             </div>
+        </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination table-pagination" id="pagination_bottom">
+                <li>
+                    <a aria-label="Previous" onclick='changePage("prev")'>
+                        <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
+                    </a>
+                </li>
+                {% for page in pages %}
+                <li class="table-page-button page-button-{{page.page_number}}">
+                    <a onclick='changePage("{{page.page_number}}")'>{{page.page_number}}</a>
+                </li>
+                {% endfor %}
+                <li>
+                    <a aria-label="Next" onclick='changePage("next")'>
+                        <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
         </div>
     </div>
 </div>
@@ -111,4 +110,7 @@
 {% load staticfiles %}
 <link href="{% static 'app/content/custom/report_model.css' %}" rel="stylesheet" type="text/css"/>
 <script src="{% static 'app/scripts/custom/report_model.js' %}" type="text/javascript"></script>
+<script>
+    initPages("{{ pages|length }}", 5);
+</script>
 {% endblock %}

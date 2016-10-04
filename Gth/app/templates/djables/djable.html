@@ -88,7 +88,7 @@
             <ul class="pagination table-pagination" id="table_pagination">
                 <li>
                     <a aria-label="Previous" onclick='changePage("prev")'>
-                        <span aria-hidden="true"><i class="glyphicon glyphicon-backward"></i></span>
+                        <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
                     </a>
                 </li>
                 {% for current_page in paged_set %}
@@ -96,7 +96,7 @@
                 {% endfor %}
                 <li>
                     <a aria-label="Next" onclick='changePage("next")'>
-                        <span aria-hidden="true"><i class="glyphicon glyphicon-forward"></i></span>
+                        <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
                     </a>
                 </li>
             </ul>
@@ -107,5 +107,5 @@
 <link rel="stylesheet" type="text/css" href="{% static 'djables/djables.css' %}" />
 <script src="{% static 'djables/djables.js' %}"></script>
 <script>
-    initPages("{{ page_count }}", "{{ model.items_per_page }}", "{{ model.visible_page_button_count }}", "{{ model.name }}");
+    initPages("{{ page_count }}", "{{ model.items_per_page }}", "{{ model.visible_page_button_count }}", "{{ model.url }}");
 </script>

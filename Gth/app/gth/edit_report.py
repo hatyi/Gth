@@ -23,18 +23,87 @@ def get_report(data, method):
 def __create_forms_dict(report_model = None):
     if not report_model:
         return {
+            'report_instance': Report(),
             'report_form': ReportForm(),
             'pages': [
-                {'page_form': PageForm(), 'page_instance': Page(), 'page_number': 1, 'inputs': []}
+                {
+                    'page_number': 1, 
+                    'page_instance': Page()
+                }
             ]
         }
     return {
+            'report_instance': report_model,
             'report_form': ReportForm(instance=report_model),
             'pages': [
                 {
                     'page_instance': page,
-                    'page_form': PageForm(instance=page),
-                    'page_number': i + 1, 
+                    'page_number': i + 1
+                }
+                for i,page in enumerate(report_model.pages.all())
+            ]
+        }
+
+def get_group_data(group_to_render, id_tag=None):
+    if not getattr(group_to_render, 'custom_hidden_fields', False):
+        return {'fields': 
+                [{
+                'field': x, 
+                'hidden': False,
+                'custom_id': str(id_tag) + '_' + x.name
+                } 
+            for x in group_to_render] 
+        }
+    return {
+        'fields': [
+            {
+                'field': x, 
+                'hidden': x.name in group_to_render.custom_hidden_fields,
+                'custom_id': str(id_tag) + '_' + x.name
+             } for x in group_to_render
+         ] 
+    }
+
+def get_form_data(form_to_render, id_tag=None):
+    if not getattr(form_to_render, 'custom_hidden_fields', False):
+        return {'fields': 
+                [{
+                'field': x, 
+                'hidden': False,
+                'custom_id': str(id_tag) + '_' + x.name
+                } 
+            for x in form_to_render] 
+        }
+    return {
+        'fields': [
+            {
+                'field': x, 
+                'hidden': x.name in form_to_render.custom_hidden_fields,
+                'custom_id': str(id_tag) + '_' + x.name
+             } for x in form_to_render
+         ] 
+    }
+
+
+def get_page_data(num, page=None):
+    if page is None:
+        return {
+            'page': {
+                    'page_form': PageForm(), 
+                    'page_instance': Page(), 
+                    'page_number': num, 
+                    'first_page': num==1, 
+                    'original': False, 
+                    'inputs': []
+             }
+         }
+    return {
+            'page': {
+                    'page_form': PageForm(instance=page), 
+                    'page_instance': page, 
+                    'page_number': num, 
+                    'first_page': num == 1, 
+                    'original': True, 
                     'inputs': [
                         {
                             'input_instance': input_model,
@@ -42,11 +111,11 @@ def __create_forms_dict(report_model = None):
                             'page_order': i+1
                         }
                         for i,input_model in enumerate(page.inputs_ordered)
-                        ]}
-                for i,page in enumerate(report_model.pages.all())
-            ]
+                    ]
         }
+    }
 
+    
 
 def __get_input_form(input_model):
     def __get_simple_form(model):
@@ -68,40 +137,3 @@ def __get_input_form(input_model):
                 ]
             }
     return __get_simple_form(input_model)
-
-    
-
-#def edit_report_model(request, method):
-#    if request.method == "POST":
-#        return JsonResponse({'succes':True})
-
-#    forms = get_report_model_forms(request, method)
-#    i = 0
-#    for x in forms[1]:
-#        if i == 0:
-#            forms[1].title_field = x
-#        elif i == 1:
-#            forms[1].desc_field = x
-#        i += 1
-
-#    return render(request, 'app/edit_model.html',{
-#        'report_form': forms[0],
-#        'page_form': forms[1]
-#        })
-
-#def report_model_logic(request, method, form):
-#    return JsonResponse({'success':True})
-
-
-#def get_report_model_forms(request, method):
-#    
-#    if request.method == 'GET':
-#        if method == manager.new:
-#            return (ReportForm(),PageForm())
-#    #    elif djables_method == manager.edit:
-#    #        return [UserForm(instance=report.user), ProfileForm(instance=report)]
-#    #if djables_method == manager.new:
-#    #    return [UserForm(request.POST), ProfileForm(request.POST)]
-#    #elif djables_method == manager.edit:
-#    #    return [UserForm(request.POST, instance=report.user), ProfileForm(request.POST, instance=report)]
-#    raise Http404()

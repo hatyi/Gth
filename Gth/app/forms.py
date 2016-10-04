@@ -56,6 +56,7 @@ class PageForm(forms.ModelForm):
                   'page']
 
 class InputGroupForm(forms.ModelForm):
+    custom_hidden_fields = ['page', 'page_order']
     class Meta:
         model = ReportInputGroupModel
         fields = ['title', 'description', 
@@ -63,12 +64,13 @@ class InputGroupForm(forms.ModelForm):
                   'page', 'page_order']
 
 class TextInputForm(forms.ModelForm):
+    custom_hidden_fields = ['page', 'group', 'page_order', 'group_order']
     class Meta:
         model = TextInputModel
         fields = [
             'default_text', 
             'title', 'description', 'placeholder', 
             'can_be_empty', 'can_comment', 'must_comment', 
-            #special
+            #special TODO DUNNO WHAT TO DO WITH INPUT TYPE
             'page', 'group', 'input_type', 'page_order', 'group_order'
         ]

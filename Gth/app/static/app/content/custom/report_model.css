@@ -11,19 +11,20 @@
     margin-top: 5px;
 }
 #pages-outer-container {
-    overflow-x: scroll;
+    overflow: hidden;
     width: 100%;
 }
-#pages-inner-container {
-    width: 200%;
-    white-space: nowrap;
-}
+/*#pages-inner-container {
+    width: 100%;
+    overflow: hidden;
+}*/
 .btn-primary-white>a {
     color: white;
 }
 .page-panel {
-    width: 25%;
+    /*width: 100%;
     display: inline-block;
+    position: static*/
 }
 .report-page {
     margin-top: 20px;

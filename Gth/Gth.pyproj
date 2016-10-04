@@ -87,6 +87,7 @@
     <Folder Include="app\static\djables\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
+    <Folder Include="app\templates\app\report_model\" />
     <Folder Include="app\templates\djables\" />
     <Folder Include="app\templatetags\" />
     <Folder Include="Gth\" />
@@ -272,7 +273,9 @@
     <Content Include="app\static\djables\djables.css" />
     <Content Include="app\static\djables\djables.js" />
     <Content Include="app\templates\app\authenticated.html" />
-    <Content Include="app\templates\app\custom_form.html" />
+    <Content Include="app\templates\app\report_model\custom_group.html" />
+    <Content Include="app\templates\app\report_model\custom_page.html" />
+    <Content Include="app\templates\app\report_model\custom_form.html" />
     <Content Include="app\templates\app\edit_model.html" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\djables\djable.html" />

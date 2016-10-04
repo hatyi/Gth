@@ -4,7 +4,7 @@
         {% for x in fields %}
         {% if not x.hidden %}
         <p class="m-b-0 m-t-10">{{ x.field.label_tag }}</p>
-        {% render_field x.field class+="form-control" %}
+        {% render_field x.field class+="form-control" name=x.custom_id %}
         {{ x.field.errors }}
         {% if x.field.help_text %}
         <p class="help">{{ x.field.help_text|safe }}</p>
