@@ -1,4 +1,19 @@
-﻿@media screen and (max-width: 768px) {
+﻿body {
+    height: 100% !important;
+}
+
+@media screen and (min-width: 992px) {
+    #sideBar {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    #sideBar>.page-sidebar{
+        height: 100%!important;
+    }
+}
+
+@media screen and (max-width: 768px) {
     .hidden-xs-inline {
         display: none !important;
     }

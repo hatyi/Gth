@@ -1,14 +1,13 @@
 {% extends "app/layout.html" %}
-
+{% load staticfiles %}
 {% block content %}
-
 <div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner">
         <div class="page-logo text-center">
             <h3 style="color: white; display: inline-block;">Gth</h3>
             <div class="menu-toggler sidebar-toggler"></div>
         </div>
-        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+        <a class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
         <div class="page-actions">
             <div class="btn-group">
                 <button type="button" class="btn btn-circle btn-outline red dropdown-toggle" data-toggle="dropdown">
@@ -63,7 +62,7 @@
 </div>
 <div class="clearfix"> </div>
 <div class="page-container">
-    <div class="page-sidebar-wrapper">
+    <div class="page-sidebar-wrapper" id="sideBar">
         <div class="page-sidebar navbar-collapse collapse">
             <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
                 <li class="nav-item {{page.dashboard}}">
@@ -105,11 +104,12 @@
             </ul>
         </div>
     </div>
-    <div class="page-content-wrapper">
+    <div class="page-content-wrapper page-content">
         <div class="page-content">
-            
+
             {% block current_content %}{% endblock %}
         </div>
     </div>
 </div>
+<script src="{% static 'app/scripts/base/sidebar.js' %}"></script>
 {% endblock %}

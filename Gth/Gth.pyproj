@@ -145,6 +145,7 @@
     <Content Include="app\static\app\img\icons\sidebar-toggler.png" />
     <Content Include="app\static\app\img\icons\syncfusion-icons-white.png" />
     <Content Include="app\static\app\img\icons\syncfusion-icons.png" />
+    <Content Include="app\static\app\scripts\base\sidebar.js" />
     <Content Include="app\static\app\scripts\custom\report_model.js" />
     <Content Include="app\static\app\scripts\plugins\additional-methods.min.js" />
     <Content Include="app\static\app\scripts\plugins\app.min.js" />
