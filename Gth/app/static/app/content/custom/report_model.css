@@ -3,12 +3,24 @@
     margin-right: 5px;
     float: right;
 }
-.panel-button>a {
+.btn-xs.panel-button{
+    margin-top: 5px;
+    float: right;
+}
+.panel-button>a,
+.panel-button>i,
+.panel-button>a>i {
     color: white;
+}
+.panel-button.btn-default>i{
+    color:#222;
 }
 .panel-title {
     margin-bottom: 6px;
     margin-top: 5px;
+}
+.panel-title>small {
+    color:#EEE;
 }
 #pages-outer-container {
     overflow: hidden;
@@ -21,11 +33,9 @@
 .btn-primary-white>a {
     color: white;
 }
-.page-panel {
-    /*width: 100%;
-    display: inline-block;
-    position: static*/
-}
 .report-page {
     margin-top: 20px;
+}
+.simple-input-panel>.panel-heading{
+    background-color: #17C4BB;
 }

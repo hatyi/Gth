@@ -44,25 +44,31 @@ def __create_forms_dict(report_model = None):
             ]
         }
 
-def get_group_data(group_to_render, id_tag=None):
-    if not getattr(group_to_render, 'custom_hidden_fields', False):
-        return {'fields': 
-                [{
-                'field': x, 
-                'hidden': False,
-                'custom_id': str(id_tag) + '_' + x.name
-                } 
-            for x in group_to_render] 
-        }
+def get_input_data(input, page, id_tag=None):
     return {
-        'fields': [
-            {
-                'field': x, 
-                'hidden': x.name in group_to_render.custom_hidden_fields,
-                'custom_id': str(id_tag) + '_' + x.name
-             } for x in group_to_render
-         ] 
+        'input':{
+            'page': page,
+            'input_instance': input,
+            'input_form': __get_input_form(input),
+            'page_order': input.page_order,
+            'group_order': input.group_order,
+            'id_tag':id_tag
     }
+}
+    
+
+
+def get_group_data(group, page, id_tag=None):
+    return {
+        'group':{
+            'page': page,
+            'group_instance': group,
+            'group_form': InputGroupForm(instance=group),
+            'page_order': group.page_order,
+            'inputs': group.inputs_ordered,
+            'id_tag':id_tag
+    }
+}
 
 def get_form_data(form_to_render, id_tag=None):
     if not getattr(form_to_render, 'custom_hidden_fields', False):
@@ -108,6 +114,7 @@ def get_page_data(num, page=None):
                         {
                             'input_instance': input_model,
                             'input_form': __get_input_form(input_model), 
+                            'is_group': isinstance(input_model, ReportInputGroupModel),
                             'page_order': i+1
                         }
                         for i,input_model in enumerate(page.inputs_ordered)

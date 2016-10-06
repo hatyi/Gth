@@ -28,22 +28,6 @@ window.onload = function () {
         $("#report_title").html(title);
         $("#basic_info_modal").modal("hide");
         saveClick = true;
-        //var errorHandler= function(reply) {
-        //    console.log(reply);
-        //};
-        //$("#basic_info_form").ajaxSubmit({
-        //    url: window.location.pathname + "/report", type: "post",
-        //    success: function (reply) {
-        //        if (reply.success) {
-        //            $("#report_title").html(title);
-        //            $("#basic_info_modal").modal("hide");
-        //            saveClick = true;
-        //        } else {
-        //            errorHandler(reply);
-        //        }
-        //    },
-        //    error: errorHandler
-        //});
     });
     $("#basic_info_modal").on("hidden.bs.modal", function() {
         if (window.location.pathname.indexOf("new") !== -1 && firstOpen && !saveClick) {
@@ -214,3 +198,9 @@ function titleInputHandler() {
     else
         $("div[page='" + page + "'] > div > div > h2").html("Edit title");
 }
+
+$(".input-details-button").click(function(){
+    var commonParent = $(this).closest(".input-panel-container");
+    var modal = commonParent.children(".modal");
+    modal.modal("show");
+});

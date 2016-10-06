@@ -64,13 +64,12 @@ class InputGroupForm(forms.ModelForm):
                   'page', 'page_order']
 
 class TextInputForm(forms.ModelForm):
-    custom_hidden_fields = ['page', 'group', 'page_order', 'group_order']
+    custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
     class Meta:
         model = TextInputModel
         fields = [
-            'default_text', 
             'title', 'description', 'placeholder', 
             'can_be_empty', 'can_comment', 'must_comment', 
-            #special TODO DUNNO WHAT TO DO WITH INPUT TYPE
+            'default_text', 
             'page', 'group', 'input_type', 'page_order', 'group_order'
         ]

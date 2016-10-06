@@ -1,56 +1,44 @@
 {% load custom_form %}
-<div id="page_panel_{{page.page_number}}" class="{{page.first_page|yesno:'page-panel,page-panel hidden'}}" page="{{page.page_number}}">
-    <div class="panel panel-default report-page">
+<div class="input-panel-container">
+    <div class="panel panel-default group-input-panel">
         <div class="panel-heading">
-            <div class="btn btn-danger btn-sm panel-button">
-                <a>
+            <div class="btn-group pull-right">
+                <button type="button" class="btn btn-sm btn-default panel-button input-details-button" data-toggle="modal">
+                <i class="fa fa-cogs"></i>
+            </button>
+                <div class="btn btn-danger btn-sm panel-button">
                     <i class="fa fa-times"></i>
-                </a>
+                </div>
             </div>
-            <div class="btn btn-info btn-sm panel-button" direction="right">
-                <a>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-            <div class="btn btn-info btn-sm panel-button" direction="left">
-                <a>
-                    <i class="fa fa-angle-left"></i>
-                </a>
-            </div>
-            <h2 class="panel-title">{{page.page_instance.title}}</h2>
+            <h3 class="panel-title"><small>Group</small> - {{group.group_instance.title}}</h3>
         </div>
         <div class="panel-body">
-            <form method="post">
-                {% csrf_token %}
-                {% with page_num_s=page.page_number|stringformat:"s" %}
-                {% with prefix=page.original|yesno:"original_page_,page_" %}
-                {% with page_id=prefix|add:page_num_s %}
-                {% render_custom_form page.page_form page_id %}
-                {% endwith %}
-                {% endwith %}
-                {% endwith %}
-            </form>
-            <div class="panel panel-default inputs-panel">
-                <div class="panel-heading">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-sm btn-success dropdown-toggle panel-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                        <ul class="dropdown-menu pull-right">
-                            <li>
-                                <a><i class="fa fa-object-group"></i> Add group</a>
-                            </li>
-                            <li>
-                                <a><i class="fa fa-keyboard-o"></i> Add input</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <h3 class="panel-title">Inputs</h3>
+            <ol class="list-unstyled">
+                {% for input in group.inputs %}
+                <li>
+                    {% render_custom_input input page %}
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                    <h4 class="modal-title" id="myModalLabel">{{group.group_instance.title}}</h4>
                 </div>
-                <div class="panel-body">
-                    {% for input in page.inputs %}
-                    {{input.input_instance.title}}<!--TODO-->
-                    {% endfor %}
+                <div class="modal-body">
+                    <form method="POST">
+                        {% csrf_token %} {% render_custom_form group.group_form %}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="basic_info_save" type="button" class="btn btn-primary">Save</button>
+                    <button id="basic_info_cancel" type="button" class="btn btn-alt" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>

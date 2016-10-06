@@ -70,6 +70,10 @@ class ReportInputGroupModel(models.Model):
     description = models.CharField(max_length=255, blank=True, null=True, default='This is a new input group')
     page_order = models.SmallIntegerField(default=1)
 
+    @property
+    def inputs_ordered(self):
+        return self.inputs.order_by('page_order')
+
 class ReportInputModel(models.Model):
     TEXT = 0
     DATE = 1
@@ -103,6 +107,10 @@ class ReportInputModel(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def type_as_str(self):
+        return {x[0]:x[1] for x in self.TYPES}.get(self.input_type)
 
 class TextInputModel(ReportInputModel):
     default_text = models.CharField(max_length=255, blank=True, null=True)

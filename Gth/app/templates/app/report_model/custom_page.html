@@ -48,9 +48,17 @@
                     <h3 class="panel-title">Inputs</h3>
                 </div>
                 <div class="panel-body">
-                    {% for input in page.inputs %}
-                    {{input.input_instance.title}}<!--TODO-->
-                    {% endfor %}
+                    <ol class="list-unstyled">
+                        {% for input in page.inputs %}
+                        <li>
+                            {% if input.is_group %}
+                            {% render_custom_group input.input_instance page %}
+                            {% else %}
+                            {% render_custom_input input.input_instance page %}
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ol>
                 </div>
             </div>
         </div>

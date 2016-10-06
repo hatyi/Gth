@@ -4,8 +4,8 @@
 
 @media screen and (min-width: 992px) {
     #sideBar {
-        position: absolute;
-        top: 0;
+        position: fixed;
+        top: 70;
         left: 0;
     }
     #sideBar>.page-sidebar{
