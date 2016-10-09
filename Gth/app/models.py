@@ -74,6 +74,9 @@ class ReportInputGroupModel(models.Model):
     def inputs_ordered(self):
         return self.inputs.order_by('page_order')
 
+    def __str__(self):
+        return '%s - %s - %s' % (self.page.report.title, self.page.title, self.title)
+
 class ReportInputModel(models.Model):
     TEXT = 0
     DATE = 1

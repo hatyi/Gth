@@ -12,7 +12,6 @@ absolute_import
 vendored
 html5lib
 glob
-_markerlib
 DEBUNDLED
 cachecontrol
 lockfile

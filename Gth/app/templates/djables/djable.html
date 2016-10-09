@@ -3,16 +3,18 @@
 <div class="container-fluid m-l-10 m-r-10">
     {% if model.filterable or model.actions %}
     <div class="row m-b-10 m-t-10">
-        {% if model.filterable %}
-        <input class="input-sm djable-search-input" type="text">
-        <span class="search-button m-l-5"><i class="fa fa-search"></i></span>
-        {% if model.special_filters %}
-        <span class="search-button m-l-5"><i id="djable_special_toggle" class="fa fa-filter" data-toggle="modal" data-target="#djable_special_filters"></i></span>
-        {% endif %}
-        {% endif %}
         {% for action in model.action_buttons %}
-        <div class="btn btn-alt m-b-10 pull-right m-l-10"><a href="{{action.href}}">{{action.value}}</a></div>
-        {% endfor %}
+        <a class="btn btn-info djable-action-button" href="{{action.href}}">{{action.value}}</a>
+        {% endfor %}   
+        {% if model.filterable %}
+        <div class="col-sm-12 col-md-6 p-l-0">
+            <input class="input-sm djable-search-input" type="text" placeholder="Search...">
+            <span class="search-button m-l-5"><i class="fa fa-search"></i></span>
+            {% if model.special_filters %}
+            <span class="search-button m-l-5"><i id="djable_special_toggle" class="fa fa-filter" data-toggle="modal" data-target="#djable_special_filters"></i></span>
+            {% endif %}
+        </div>
+        {% endif %}
     </div>
     {% endif %}
     {% if model.special_filterable %}
@@ -33,15 +35,15 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-alt" onclick="specialResetClick()" data-dismiss="modal">Reset</button>
-                    <button type="button" class="btn btn-primary" onclick="filterTableRequest()" data-dismiss="modal">Apply</button>
+                    <button type="button" class="btn btn-success" onclick="filterTableRequest()" data-dismiss="modal">Apply</button>
                 </div>
             </div>
         </div>
     </div>
     {% endif %}
     <div class="row">
-        <div class="table-responsive overflow">
-            <table class="table">
+        <div class="table-responsive panel panel-default">
+            <table class="table table-striped">
                 <thead>
                 <tr>
                     {% for column in model.columns %}

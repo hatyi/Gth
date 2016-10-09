@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    'pipeline',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -128,3 +129,48 @@ STATIC_URL = '/static/'
 STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
 
 LOGIN_URL = '/login'
+
+
+STATICFILES_DIRS = (
+  os.path.join(os.path.dirname(__file__), '../app/static/', 'bower_components'),
+)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+PIPELINE = {
+    'STYLESHEETS': {
+        'libraries': {
+            'source_filenames': (
+                'bower_components/bootstrap/dist/css/bootstrap.min.*',
+                'bower_components/bootstrap/dist/css/bootstrap-theme.min.*',
+                'bower_components/font-awesome/css/font-awesome.min.*',
+                'bower_components/select2/dist/css/select2.min.css',
+                'bower_components/simple-line-icons/css/simple-line-icons.css',
+
+            ),
+            'output_filename': 'css/libs.min.css',
+            'extra_context': {
+                'media': 'screen,projection',
+            },
+        },
+    },
+    'JAVASCRIPT': {
+        'libraries': {
+            'source_filenames': (
+                'bower_components/jquery/dist/jquery.min.*',
+                'bower_components/bootstrap/dist/js/bootstrap.min.js',
+                'bower_components/jquery-slimscroll/dist/jquery.slimscroll.min.js',
+                'bower_components/jquery-validation/dist/jquery.validate.min.js',
+                'bower_components/jquery-validation/dist/additional-methods.min.js',
+                'bower_components/respond/dest/respond.min.js',
+                'bower_components/respond/dest/respond.matchmedia.addListener.min.js',
+                'bower_components/select2/dist/js/select2.full.min.js',
+                'bower_components/Sortable/Sortable.min.js',
+
+            ),
+            'output_filename': 'scripts/libs.min.js',
+        }
+    }
+}

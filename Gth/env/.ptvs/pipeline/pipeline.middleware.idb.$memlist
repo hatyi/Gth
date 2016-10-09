@@ -1,0 +1,6 @@
+DjangoUnicodeDecodeError
+settings
+unicode_literals
+MiddlewareNotUsed
+MinifyHTMLMiddleware
+minify_html

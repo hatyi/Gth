@@ -2,19 +2,15 @@
 {% load widget_tweaks %}
 {% block current_content %}
 <div class="container-fluid m-r-10 m-l-10">
-    <div class="row m-t-10 m-b-10">
-        <div class="btn btn-alt pull-right">
-            <a href="{{back_path}}">Back</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title text-capitalize uppercase">{{form_title}}</h3>
-            </div>
-            <div class="panel-body p-t-10">
-                <form method="post">
-                    {% csrf_token %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-capitalize uppercase">{{form_title}}</h3>
+                </div>
+                <div class="panel-body p-t-10">
+
                     <div class="row p-b-15">
                         <div class="col-lg-4 col-md-8">
                             {% for form in forms %}
@@ -28,14 +24,16 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="row p-b-10">
-                        <div class="col-xs-12">
-                            <button class="btn btn-sm btn-primary">Save</button>
-                        </div>
-                    </div>
-                </form>
+
+                </div>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-xs-12 p-l-0 p-r-0">
+                <button class="btn btn-success" type="submit">Save</button>
+                <a class="btn btn-danger" href="{{back_path}}">Cancel</a>
+            </div>
+        </div>
+    </form>
 </div>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.http.response import Http404
 from djables import djables_manager as manager
-from app.forms import ReportForm, PageForm, TextInputForm, InputGroupForm
+from app.forms import ReportForm, PageForm, TextInputForm, InputGroupForm, SignatureInputForm
 from django.db.models.query_utils import Q
 from django.shortcuts import get_object_or_404
 from app.models import Report, Page, ReportInputGroupModel, TextInputModel, ReportInputModel
@@ -12,17 +12,19 @@ def save_report(data, method):
 
 def get_report(data, method):
     if method == manager.new:
-        return __create_forms_dict()
+        result = __create_forms_dict()
+        return result
     if method == manager.edit:
         id = int(data.get('id', '-1'))
         report = get_object_or_404(Report.objects.filter(Q(active=True)), id=id)
-        return __create_forms_dict(report)
+        result = __create_forms_dict(report)
+        return result
     raise Http404()
 
 
 def __create_forms_dict(report_model = None):
     if not report_model:
-        return {
+        result = {
             'report_instance': Report(),
             'report_form': ReportForm(),
             'pages': [
@@ -32,7 +34,8 @@ def __create_forms_dict(report_model = None):
                 }
             ]
         }
-    return {
+        return result
+    result = {
             'report_instance': report_model,
             'report_form': ReportForm(instance=report_model),
             'pages': [
@@ -43,9 +46,10 @@ def __create_forms_dict(report_model = None):
                 for i,page in enumerate(report_model.pages.all())
             ]
         }
+    return result
 
 def get_input_data(input, page, id_tag=None):
-    return {
+    result = {
         'input':{
             'page': page,
             'input_instance': input,
@@ -53,13 +57,15 @@ def get_input_data(input, page, id_tag=None):
             'page_order': input.page_order,
             'group_order': input.group_order,
             'id_tag':id_tag
+        }
     }
-}
+    return result
+
     
 
 
 def get_group_data(group, page, id_tag=None):
-    return {
+    result = {
         'group':{
             'page': page,
             'group_instance': group,
@@ -67,33 +73,37 @@ def get_group_data(group, page, id_tag=None):
             'page_order': group.page_order,
             'inputs': group.inputs_ordered,
             'id_tag':id_tag
+        }
     }
-}
+    return result
 
 def get_form_data(form_to_render, id_tag=None):
     if not getattr(form_to_render, 'custom_hidden_fields', False):
-        return {'fields': 
-                [{
-                'field': x, 
-                'hidden': False,
-                'custom_id': str(id_tag) + '_' + x.name
+        result = {
+            'fields': [
+                {
+                    'field': x, 
+                    'hidden': False,
+                    'custom_id': str(id_tag) + '_' + x.name
                 } 
             for x in form_to_render] 
         }
-    return {
+        return result
+    result = {
         'fields': [
             {
                 'field': x, 
                 'hidden': x.name in form_to_render.custom_hidden_fields,
                 'custom_id': str(id_tag) + '_' + x.name
              } for x in form_to_render
-         ] 
-    }
+            ] 
+        }
+    return result
 
 
 def get_page_data(num, page=None):
     if page is None:
-        return {
+        result = {
             'page': {
                     'page_form': PageForm(), 
                     'page_instance': Page(), 
@@ -102,8 +112,9 @@ def get_page_data(num, page=None):
                     'original': False, 
                     'inputs': []
              }
-         }
-    return {
+        }
+        return result
+    result = {
             'page': {
                     'page_form': PageForm(instance=page), 
                     'page_instance': page, 
@@ -119,19 +130,22 @@ def get_page_data(num, page=None):
                         }
                         for i,input_model in enumerate(page.inputs_ordered)
                     ]
+            }
         }
-    }
+    return result
 
     
 
 def __get_input_form(input_model):
     def __get_simple_form(model):
-        return {
-            ReportInputModel.TEXT: lambda x: TextInputForm(instance=x)
+        result = {
+            ReportInputModel.TEXT: lambda x: TextInputForm(instance=x),
+            ReportInputModel.SIGNATURE: lambda x: SignatureInputForm(instance=x),
         }[model.input_type](model)
+        return result
 
     if isinstance(input_model, ReportInputGroupModel):
-        return {
+        result = {
             'group_instance': input_model,
             'group_form': InputGroupForm(instance=input_model),
             'inputs': [
@@ -143,4 +157,5 @@ def __get_input_form(input_model):
                 for i,x in enumerate(input_model.inputs.all())
                 ]
             }
+        return result
     return __get_simple_form(input_model)

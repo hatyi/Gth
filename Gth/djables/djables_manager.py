@@ -95,5 +95,6 @@ def get_urls():
     return [
         url(r'^' + get_instance_names() + '$', table_based_view),
         url(r'^' + get_instance_names() + '/' + get_form_actions() + '$', form_based_view),
-        url(r'^djables_filter/(\w+)$', filter_request)
+        url(r'^djables_filter/(\w+)$', filter_request),
+        url(r'^djables_filter/(\w+\/\w+)$', filter_request),
     ]

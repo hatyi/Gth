@@ -7,8 +7,8 @@ InstallRequirement
 logger
 RemovedInPip9Warning
 rmtree
-get_stdlib
-InstallationError
+WINDOWS
+UninstallationError
 url_to_path
 change_root
 ask_path_exists
@@ -19,7 +19,7 @@ configparser
 native_str
 operators
 bin_user
-dist_in_site_packages
+indent_log
 display_path
 running_under_virtualenv
 move_wheel_files
@@ -29,9 +29,9 @@ is_url
 six
 bin_py
 call_subprocess
-PIP_DELETE_MARKER_FILENAME
+canonicalize_name
 zipfile
-egg_link_path
+Requirement
 re
 RemovedInPip10Warning
 FeedParser
@@ -41,9 +41,9 @@ path_to_url
 warnings
 open_spinner
 backup_dir
-WINDOWS
+get_stdlib
+InstallationError
 specifiers
-UninstallationError
 sys
 Version
 logging
@@ -53,9 +53,9 @@ is_archive_file
 dist_is_local
 parse_editable
 os
-markers_interpret
-UnsupportedWheel
-indent_log
+Marker
+dist_in_site_packages
+InvalidRequirement
 sysconfig
 Wheel
 absolute_import
@@ -63,6 +63,7 @@ shutil
 _strip_postfix
 normalize_path
 get_installed_version
-canonicalize_name
+PIP_DELETE_MARKER_FILENAME
 _build_req_from_url
+egg_link_path
 SETUPTOOLS_SHIM

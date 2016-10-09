@@ -6,7 +6,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from app.models import *
 from django.contrib.auth.models import User
-from django.forms.widgets import SelectDateWidget
+from django.forms.widgets import SelectDateWidget, Textarea
 
 
 class ProfileForm(forms.ModelForm):
@@ -46,6 +46,9 @@ class ReportForm(forms.ModelForm):
     class Meta:
         model = Report
         fields = ['title', 'description']
+        widgets = {
+            'description': Textarea(attrs={'cols': 80, 'rows': 5})
+            }
 
 class PageForm(forms.ModelForm):
     custom_hidden_fields = ['page']
@@ -54,6 +57,9 @@ class PageForm(forms.ModelForm):
         fields = ['title', 'description', 
                   #special
                   'page']
+        widgets = {
+            'description': Textarea(attrs={'cols': 80, 'rows': 5})
+            }
 
 class InputGroupForm(forms.ModelForm):
     custom_hidden_fields = ['page', 'page_order']
@@ -62,6 +68,9 @@ class InputGroupForm(forms.ModelForm):
         fields = ['title', 'description', 
                   #special
                   'page', 'page_order']
+        widgets = {
+            'description': Textarea(attrs={'cols': 80, 'rows': 5})
+            }
 
 class TextInputForm(forms.ModelForm):
     custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
@@ -69,7 +78,29 @@ class TextInputForm(forms.ModelForm):
         model = TextInputModel
         fields = [
             'title', 'description', 'placeholder', 
-            'can_be_empty', 'can_comment', 'must_comment', 
+            'can_be_empty', 'can_comment', 'must_comment',
+             
             'default_text', 
+
             'page', 'group', 'input_type', 'page_order', 'group_order'
         ]
+        widgets = {
+            'description': Textarea(attrs={'cols': 80, 'rows': 5})
+            }
+
+
+class SignatureInputForm(forms.ModelForm):
+    custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
+    class Meta:
+        model = SignatureInputModel
+        fields = [
+            'title', 'description', 'placeholder', 
+            'can_be_empty', 'can_comment', 'must_comment', 
+
+            'default_typed_signature', 
+
+            'page', 'group', 'input_type', 'page_order', 'group_order'
+        ]
+        widgets = {
+            'description': Textarea(attrs={'cols': 80, 'rows': 5})
+            }

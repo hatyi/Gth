@@ -6,8 +6,9 @@ _osx_arch_pat
 ctypes
 re
 get_darwin_arches
+implementation_tag
 logger
-get_supported
+check_glibc_version
 _is_running_32bit
 OrderedDict
 get_flag
@@ -19,7 +20,7 @@ distutils
 get_impl_ver
 warnings
 supported_tags
-implementation_tag
+get_supported
 get_config_var
 is_manylinux1_compatible
 platform

@@ -1,0 +1,14 @@
+PipelineCachedStorage
+PipelineStorage
+matches_patterns
+BytesIO
+gzip
+NonPackagingMixin
+CachedStaticFilesStorage
+NonPackagingPipelineCachedStorage
+NonPackagingPipelineStorage
+StaticFilesStorage
+PipelineMixin
+unicode_literals
+File
+GZIPMixin

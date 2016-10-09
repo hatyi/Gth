@@ -60,7 +60,7 @@ re
 NoMatch
 __builtin__
 OnlyOnce
-htmlComment
+dblSlashComment
 OneOrMore
 WordEnd
 infixNotation
@@ -141,10 +141,9 @@ nullDebugAction
 pythonStyleComment
 fname
 javaStyleComment
-dblSlashComment
 GoToColumn
 Forward
-getTokensEndLoc
+htmlComment
 sre_constants
 matchPreviousExpr
 WordStart

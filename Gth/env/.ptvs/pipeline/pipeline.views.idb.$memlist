@@ -1,0 +1,7 @@
+unicode_literals
+django_settings
+settings
+serve
+default_collector
+serve_static
+ImproperlyConfigured

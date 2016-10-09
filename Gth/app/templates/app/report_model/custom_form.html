@@ -1,10 +1,22 @@
+{% load custom_form %}
 {% load widget_tweaks %}
 <div class="row p-t-10 p-b-15">
-    <div class="col-md-8 col-lg-6">
+    <div class="p-l-15 p-r-15">
         {% for x in fields %}
         {% if not x.hidden %}
+        {% if not x.field|is_checkbox %}
         <p class="m-b-0 m-t-10">{{ x.field.label_tag }}</p>
-        {% render_field x.field class+="form-control" name=x.custom_id %}
+        {% render_field x.field class+="form-control" %}
+        {% else %}
+        <div class="row m-b-0 m-t-10">
+            <div class="col-xs-8">
+                {{ x.field.label_tag }}
+            </div>
+            <div class="col-xs-4 text-right">
+            {% render_field x.field class+="form-control" %}
+            </div>
+        </div>
+        {% endif %}
         {{ x.field.errors }}
         {% if x.field.help_text %}
         <p class="help">{{ x.field.help_text|safe }}</p>

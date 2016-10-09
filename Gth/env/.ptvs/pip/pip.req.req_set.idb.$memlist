@@ -15,6 +15,7 @@ expanduser
 defaultdict
 display_path
 indent_log
+Wheel
 RequirementSet
 normalize_path
 DistributionNotFound

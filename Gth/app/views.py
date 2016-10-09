@@ -53,7 +53,9 @@ def edit_report_model(request, method):
     return render(request, 'app/edit_model.html', data)
 
 def get_new_page(request, current_page_count):
-    return render(request, 'app/report_model/custom_page.html', get_page_data(int(current_page_count)+1))
+    data = get_page_data(int(current_page_count)+1)
+    return render(request, 'app/report_model/custom_page.html', data)
 
 def get_new_input(request):
-    return render(request, 'app/report_model/custom_form.html', get_form_data(TextInputForm()))
+    data = get_form_data(TextInputForm())
+    return render(request, 'app/report_model/custom_form.html', data)

@@ -1,0 +1,5 @@
+absolute_import
+JSMinCompressor
+unicode_literals
+jsmin
+CompressorBase

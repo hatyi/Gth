@@ -5,35 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - My Django Application</title>
     {% load staticfiles %}
+    {% load pipeline %}
+    {% stylesheet 'libraries' %}
+    {% javascript 'libraries' %}
 
-    <!-- style -->
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/base/bootstrap.min.css' %}"/>
-    <link href="{% static 'app/content/base/font-awesome.min.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'app/content/base/simple-line-icons.min.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'app/content/base/bootstrap-switch.min.css' %}" rel="stylesheet" type="text/css"/>
-
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/plugins/font-awesome.min.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/plugins/generics.css' %}"/>
-
-    <!-- BEGIN THEME GLOBAL STYLES -->
-    <link href="{% static 'app/content/base/components.min.css' %}" rel="stylesheet" id="style_components" type="text/css"/>
-    <link href="{% static 'app/content/base/plugins.min.css' %}" rel="stylesheet" type="text/css"/>
-    
+    <link href="{% static 'app/content/base/plugins.min.css' %} "rel="stylesheet" type="text/css"/>
+    <link href="{% static 'app/content/base/components.min.css' %} "rel="stylesheet" type="text/css"/>
     <link href="{% static 'app/content/base/layout.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'app/content/base/blue.css' %}" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="{% static 'app/content/base/blue.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'app/content/base/custom.css' %}" rel="stylesheet" type="text/css"/>
-    
-    <!-- CUSTOM -->
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}"/>
+    <link href="{% static 'app/content/plugins/generics.css' %} "rel="stylesheet" type="text/css"/>
+    <link href="{% static 'app/content/site.css' %}" rel="stylesheet" type="text/css"/>
 
-    <script src="{% static 'app/scripts/base/jquery-1.10.2.min.js' %}"></script>
-    <script src="{% static 'app/scripts/plugins/jquery.form.min.js' %}"></script>
-    <script src="{% static 'app/scripts/base/bootstrap.min.js' %}"></script>
-    <script src="{% static 'app/scripts/base/respond.min.js' %}"></script>
-    <script src="{% static 'app/scripts/base/modernizr-2.6.2.js' %}"></script>
+    <script src="{% static 'app/scripts/base/modernizr-2.6.2.js'%}"></script>
 </head>
 
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid" style="overflow-x: hidden">
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">
 
 {% block content %}{% endblock %}
 </body>

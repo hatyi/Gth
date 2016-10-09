@@ -2346,3 +2346,568 @@ C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Micro
 2016-09-27T22:57:35: Saving group "D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\widget_tweaks"
 2016-09-27T22:57:35: End of group "D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\widget_tweaks"
 2016-09-27T22:57:36: Deleting 0 files
+
+2016-10-08T15:47:37: Start analysis
+2016-10-08T15:47:37: [WARNING] Library was set explicitly - skipping path detection
+2016-10-08T15:47:37: IncludeModulesFromModulePath = win32com
+2016-10-08T15:47:38: Deleting 233 files
+
+2016-10-08T15:47:43: Start analysis
+2016-10-08T15:47:43: [WARNING] Library was set explicitly - skipping path detection
+2016-10-08T15:47:43: IncludeModulesFromModulePath = win32com
+2016-10-08T15:47:44: Deleting 0 files
+2016-10-08T15:47:44: astropy.CallDepth = 0
+2016-10-08T15:47:44: matplotlib.CallDepth = 3
+2016-10-08T15:47:44: pandas.CallDepth = 0
+2016-10-08T15:47:44: sympy.CallDepth = 0
+2016-10-08T15:47:44: Start group "D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip" with 232 files
+2016-10-08T15:47:44: Parsing "pip.basecommand" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\basecommand.py")
+2016-10-08T15:47:44: Parsing "pip.baseparser" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\baseparser.py")
+2016-10-08T15:47:44: Parsing "pip.cmdoptions" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\cmdoptions.py")
+2016-10-08T15:47:44: Parsing "pip.download" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\download.py")
+2016-10-08T15:47:44: Parsing "pip.exceptions" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\exceptions.py")
+2016-10-08T15:47:44: Parsing "pip.index" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\index.py")
+2016-10-08T15:47:44: Parsing "pip.locations" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\locations.py")
+2016-10-08T15:47:44: Parsing "pip.pep425tags" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\pep425tags.py")
+2016-10-08T15:47:44: Parsing "pip.status_codes" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\status_codes.py")
+2016-10-08T15:47:44: Parsing "pip.wheel" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\wheel.py")
+2016-10-08T15:47:44: Parsing "pip" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\__init__.py")
+2016-10-08T15:47:44: Parsing "pip.__main__" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\__main__.py")
+2016-10-08T15:47:44: Parsing "pip.commands.completion" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\commands\completion.py")
+2016-10-08T15:47:44: Parsing "pip.commands.download" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\commands\download.py")
+2016-10-08T15:47:44: Parsing "pip.commands.freeze" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\commands\freeze.py")
+2016-10-08T15:47:44: Parsing "pip.commands.hash" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\commands\hash.py")
+2016-10-08T15:47:44: Parsing "pip.commands.help" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\commands\help.py")
+2016-10-08T15:47:44: Parsing "pip.commands.install" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\commands\install.py")
+2016-10-08T15:47:44: Parsing "pip.commands.list" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\commands\list.py")
+2016-10-08T15:47:44: Parsing "pip.commands.search" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\commands\search.py")
+2016-10-08T15:47:44: Parsing "pip.commands.show" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\commands\show.py")
+2016-10-08T15:47:44: Parsing "pip.commands.uninstall" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\commands\uninstall.py")
+2016-10-08T15:47:44: Parsing "pip.commands.wheel" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\commands\wheel.py")
+2016-10-08T15:47:44: Parsing "pip.commands" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\commands\__init__.py")
+2016-10-08T15:47:44: Parsing "pip.compat.dictconfig" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\compat\dictconfig.py")
+2016-10-08T15:47:44: Parsing "pip.compat.ordereddict" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\compat\ordereddict.py")
+2016-10-08T15:47:44: Parsing "pip.compat" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\compat\__init__.py")
+2016-10-08T15:47:44: Parsing "pip.models.index" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\models\index.py")
+2016-10-08T15:47:44: Parsing "pip.models" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\models\__init__.py")
+2016-10-08T15:47:44: Parsing "pip.operations.freeze" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\operations\freeze.py")
+2016-10-08T15:47:44: Parsing "pip.operations" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\operations\__init__.py")
+2016-10-08T15:47:44: Parsing "pip.req.req_file" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\req\req_file.py")
+2016-10-08T15:47:44: Parsing "pip.req.req_install" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\req\req_install.py")
+2016-10-08T15:47:44: Parsing "pip.req.req_set" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\req\req_set.py")
+2016-10-08T15:47:44: Parsing "pip.req.req_uninstall" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\req\req_uninstall.py")
+2016-10-08T15:47:44: Parsing "pip.req" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\req\__init__.py")
+2016-10-08T15:47:44: Parsing "pip.utils.appdirs" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\utils\appdirs.py")
+2016-10-08T15:47:44: Parsing "pip.utils.build" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\utils\build.py")
+2016-10-08T15:47:44: Parsing "pip.utils.deprecation" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\utils\deprecation.py")
+2016-10-08T15:47:44: Parsing "pip.utils.encoding" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\utils\encoding.py")
+2016-10-08T15:47:44: Parsing "pip.utils.filesystem" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\utils\filesystem.py")
+2016-10-08T15:47:44: Parsing "pip.utils.hashes" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\utils\hashes.py")
+2016-10-08T15:47:44: Parsing "pip.utils.logging" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\utils\logging.py")
+2016-10-08T15:47:44: Parsing "pip.utils.outdated" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\utils\outdated.py")
+2016-10-08T15:47:44: Parsing "pip.utils.setuptools_build" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\utils\setuptools_build.py")
+2016-10-08T15:47:44: Parsing "pip.utils.ui" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\utils\ui.py")
+2016-10-08T15:47:44: Parsing "pip.utils" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\utils\__init__.py")
+2016-10-08T15:47:44: Parsing "pip.vcs.bazaar" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\vcs\bazaar.py")
+2016-10-08T15:47:44: Parsing "pip.vcs.git" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\vcs\git.py")
+2016-10-08T15:47:44: Parsing "pip.vcs.mercurial" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\vcs\mercurial.py")
+2016-10-08T15:47:44: Parsing "pip.vcs.subversion" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\vcs\subversion.py")
+2016-10-08T15:47:44: Parsing "pip.vcs" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\vcs\__init__.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.ipaddress" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\ipaddress.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.pyparsing" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\pyparsing.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.retrying" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\retrying.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.six" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\six.py")
+2016-10-08T15:47:44: Parsing "pip._vendor" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\__init__.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.cachecontrol.adapter" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\cachecontrol\adapter.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.cachecontrol.cache" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\cachecontrol\cache.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.cachecontrol.compat" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\cachecontrol\compat.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.cachecontrol.controller" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\cachecontrol\controller.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.cachecontrol.filewrapper" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\cachecontrol\filewrapper.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.cachecontrol.heuristics" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\cachecontrol\heuristics.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.cachecontrol.serialize" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\cachecontrol\serialize.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.cachecontrol.wrapper" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\cachecontrol\wrapper.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.cachecontrol._cmd" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\cachecontrol\_cmd.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.cachecontrol" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\cachecontrol\__init__.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.cachecontrol.caches.file_cache" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\cachecontrol\caches\file_cache.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.cachecontrol.caches.redis_cache" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\cachecontrol\caches\redis_cache.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.cachecontrol.caches" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\cachecontrol\caches\__init__.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.colorama.ansi" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\colorama\ansi.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.colorama.ansitowin32" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\colorama\ansitowin32.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.colorama.initialise" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\colorama\initialise.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.colorama.win32" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\colorama\win32.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.colorama.winterm" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\colorama\winterm.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.colorama" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\colorama\__init__.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib.compat" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\compat.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib.database" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\database.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib.index" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\index.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib.locators" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\locators.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib.manifest" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\manifest.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib.markers" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\markers.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib.metadata" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\metadata.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib.resources" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\resources.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib.scripts" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\scripts.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib.util" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\util.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib.version" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\version.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib.wheel" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\wheel.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\__init__.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib._backport.misc" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\_backport\misc.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib._backport.shutil" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\_backport\shutil.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib._backport.sysconfig" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\_backport\sysconfig.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib._backport.tarfile" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\_backport\tarfile.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.distlib._backport" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\distlib\_backport\__init__.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.constants" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\constants.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.html5parser" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\html5parser.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.ihatexml" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\ihatexml.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.inputstream" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\inputstream.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.sanitizer" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\sanitizer.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.tokenizer" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\tokenizer.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.utils" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\utils.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\__init__.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.filters.alphabeticalattributes" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\filters\alphabeticalattributes.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.filters.inject_meta_charset" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\filters\inject_meta_charset.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.filters.lint" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\filters\lint.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.filters.optionaltags" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\filters\optionaltags.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.filters.sanitizer" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\filters\sanitizer.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.filters.whitespace" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\filters\whitespace.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.filters._base" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\filters\_base.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.filters" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\filters\__init__.py")
+2016-10-08T15:47:44: Parsing "pip._vendor.html5lib.serializer.htmlserializer" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\serializer\htmlserializer.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.serializer" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\serializer\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.treeadapters.sax" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\treeadapters\sax.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.treeadapters" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\treeadapters\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.treebuilders.dom" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\treebuilders\dom.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.treebuilders.etree" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\treebuilders\etree.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.treebuilders.etree_lxml" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\treebuilders\etree_lxml.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.treebuilders._base" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\treebuilders\_base.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.treebuilders" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\treebuilders\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.treewalkers.dom" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\treewalkers\dom.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.treewalkers.etree" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\treewalkers\etree.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.treewalkers.genshistream" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\treewalkers\genshistream.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.treewalkers.lxmletree" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\treewalkers\lxmletree.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.treewalkers.pulldom" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\treewalkers\pulldom.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.treewalkers._base" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\treewalkers\_base.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.treewalkers" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\treewalkers\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.trie.datrie" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\trie\datrie.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.trie.py" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\trie\py.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.trie._base" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\trie\_base.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.html5lib.trie" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\html5lib\trie\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.lockfile.linklockfile" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\lockfile\linklockfile.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.lockfile.mkdirlockfile" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\lockfile\mkdirlockfile.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.lockfile.pidlockfile" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\lockfile\pidlockfile.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.lockfile.sqlitelockfile" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\lockfile\sqlitelockfile.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.lockfile.symlinklockfile" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\lockfile\symlinklockfile.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.lockfile" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\lockfile\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.packaging.markers" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\packaging\markers.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.packaging.requirements" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\packaging\requirements.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.packaging.specifiers" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\packaging\specifiers.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.packaging.utils" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\packaging\utils.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.packaging.version" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\packaging\version.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.packaging._compat" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\packaging\_compat.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.packaging._structures" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\packaging\_structures.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.packaging.__about__" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\packaging\__about__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.packaging" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\packaging\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.pkg_resources" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\pkg_resources\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.progress.bar" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\progress\bar.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.progress.counter" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\progress\counter.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.progress.helpers" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\progress\helpers.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.progress.spinner" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\progress\spinner.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.progress" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\progress\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.adapters" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\adapters.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.api" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\api.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.auth" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\auth.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.certs" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\certs.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.compat" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\compat.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.cookies" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\cookies.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.exceptions" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\exceptions.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.hooks" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\hooks.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.models" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\models.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.sessions" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\sessions.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.status_codes" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\status_codes.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.structures" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\structures.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.utils" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\utils.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.big5freq" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\big5freq.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.big5prober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\big5prober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.chardetect" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\chardetect.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.chardistribution" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\chardistribution.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.charsetgroupprober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\charsetgroupprober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.charsetprober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\charsetprober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.codingstatemachine" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\codingstatemachine.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.compat" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\compat.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.constants" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\constants.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.cp949prober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\cp949prober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.escprober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\escprober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.escsm" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\escsm.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.eucjpprober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\eucjpprober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.euckrfreq" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\euckrfreq.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.euckrprober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\euckrprober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.euctwfreq" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\euctwfreq.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.euctwprober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\euctwprober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.gb2312freq" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\gb2312freq.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.gb2312prober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\gb2312prober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.hebrewprober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\hebrewprober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.jisfreq" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\jisfreq.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.jpcntx" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\jpcntx.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.langbulgarianmodel" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\langbulgarianmodel.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.langcyrillicmodel" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\langcyrillicmodel.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.langgreekmodel" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\langgreekmodel.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.langhebrewmodel" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\langhebrewmodel.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.langhungarianmodel" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\langhungarianmodel.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.langthaimodel" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\langthaimodel.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.latin1prober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\latin1prober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.mbcharsetprober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\mbcharsetprober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.mbcsgroupprober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\mbcsgroupprober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.mbcssm" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\mbcssm.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.sbcharsetprober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\sbcharsetprober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.sbcsgroupprober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\sbcsgroupprober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.sjisprober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\sjisprober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.universaldetector" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\universaldetector.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet.utf8prober" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\utf8prober.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.chardet" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\chardet\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.connection" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\connection.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.connectionpool" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\connectionpool.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.exceptions" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\exceptions.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.fields" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\fields.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.filepost" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\filepost.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.poolmanager" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\poolmanager.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.request" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\request.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.response" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\response.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3._collections" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\_collections.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.contrib.appengine" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\contrib\appengine.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.contrib.ntlmpool" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\contrib\ntlmpool.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.contrib.pyopenssl" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\contrib\pyopenssl.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.contrib.socks" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\contrib\socks.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.contrib" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\contrib\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.packages.ordered_dict" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\packages\ordered_dict.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.packages.six" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\packages\six.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.packages" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\packages\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.packages.ssl_match_hostname._implementation" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\packages\ssl_match_hostname\_implementation.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.packages.ssl_match_hostname" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\packages\ssl_match_hostname\__init__.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.util.connection" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\util\connection.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.util.request" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\util\request.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.util.response" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\util\response.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.util.retry" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\util\retry.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.util.ssl_" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\util\ssl_.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.util.timeout" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\util\timeout.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.util.url" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\util\url.py")
+2016-10-08T15:47:45: Parsing "pip._vendor.requests.packages.urllib3.util" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip\_vendor\requests\packages\urllib3\util\__init__.py")
+2016-10-08T15:47:45: Parsing complete
+2016-10-08T15:47:45: Analyzing "pip.basecommand"
+2016-10-08T15:47:45: Analyzing "pip.baseparser"
+2016-10-08T15:47:45: Analyzing "pip.cmdoptions"
+2016-10-08T15:47:45: Analyzing "pip.download"
+2016-10-08T15:47:45: Analyzing "pip.exceptions"
+2016-10-08T15:47:45: Analyzing "pip.index"
+2016-10-08T15:47:45: Analyzing "pip.locations"
+2016-10-08T15:47:45: Analyzing "pip.pep425tags"
+2016-10-08T15:47:45: Analyzing "pip.status_codes"
+2016-10-08T15:47:45: Analyzing "pip.wheel"
+2016-10-08T15:47:45: Analyzing "pip"
+2016-10-08T15:47:45: Analyzing "pip.__main__"
+2016-10-08T15:47:45: Analyzing "pip.commands.completion"
+2016-10-08T15:47:45: Analyzing "pip.commands.download"
+2016-10-08T15:47:45: Analyzing "pip.commands.freeze"
+2016-10-08T15:47:45: Analyzing "pip.commands.hash"
+2016-10-08T15:47:45: Analyzing "pip.commands.help"
+2016-10-08T15:47:45: Analyzing "pip.commands.install"
+2016-10-08T15:47:45: Analyzing "pip.commands.list"
+2016-10-08T15:47:45: Analyzing "pip.commands.search"
+2016-10-08T15:47:45: Analyzing "pip.commands.show"
+2016-10-08T15:47:45: Analyzing "pip.commands.uninstall"
+2016-10-08T15:47:45: Analyzing "pip.commands.wheel"
+2016-10-08T15:47:45: Analyzing "pip.commands"
+2016-10-08T15:47:45: Analyzing "pip.compat.dictconfig"
+2016-10-08T15:47:45: Analyzing "pip.compat.ordereddict"
+2016-10-08T15:47:45: Analyzing "pip.compat"
+2016-10-08T15:47:45: Analyzing "pip.models.index"
+2016-10-08T15:47:45: Analyzing "pip.models"
+2016-10-08T15:47:45: Analyzing "pip.operations.freeze"
+2016-10-08T15:47:45: Analyzing "pip.operations"
+2016-10-08T15:47:45: Analyzing "pip.req.req_file"
+2016-10-08T15:47:45: Analyzing "pip.req.req_install"
+2016-10-08T15:47:45: Analyzing "pip.req.req_set"
+2016-10-08T15:47:45: Analyzing "pip.req.req_uninstall"
+2016-10-08T15:47:45: Analyzing "pip.req"
+2016-10-08T15:47:45: Analyzing "pip.utils.appdirs"
+2016-10-08T15:47:45: Analyzing "pip.utils.build"
+2016-10-08T15:47:45: Analyzing "pip.utils.deprecation"
+2016-10-08T15:47:45: Analyzing "pip.utils.encoding"
+2016-10-08T15:47:45: Analyzing "pip.utils.filesystem"
+2016-10-08T15:47:45: Analyzing "pip.utils.hashes"
+2016-10-08T15:47:45: Analyzing "pip.utils.logging"
+2016-10-08T15:47:45: Analyzing "pip.utils.outdated"
+2016-10-08T15:47:45: Analyzing "pip.utils.setuptools_build"
+2016-10-08T15:47:45: Analyzing "pip.utils.ui"
+2016-10-08T15:47:45: Analyzing "pip.utils"
+2016-10-08T15:47:45: Analyzing "pip.vcs.bazaar"
+2016-10-08T15:47:45: Analyzing "pip.vcs.git"
+2016-10-08T15:47:45: Analyzing "pip.vcs.mercurial"
+2016-10-08T15:47:45: Analyzing "pip.vcs.subversion"
+2016-10-08T15:47:45: Analyzing "pip.vcs"
+2016-10-08T15:47:45: Analyzing "pip._vendor.ipaddress"
+2016-10-08T15:47:45: Analyzing "pip._vendor.pyparsing"
+2016-10-08T15:47:45: Analyzing "pip._vendor.retrying"
+2016-10-08T15:47:45: Analyzing "pip._vendor.six"
+2016-10-08T15:47:45: Analyzing "pip._vendor"
+2016-10-08T15:47:45: Analyzing "pip._vendor.cachecontrol.adapter"
+2016-10-08T15:47:45: Analyzing "pip._vendor.cachecontrol.cache"
+2016-10-08T15:47:45: Analyzing "pip._vendor.cachecontrol.compat"
+2016-10-08T15:47:45: Analyzing "pip._vendor.cachecontrol.controller"
+2016-10-08T15:47:45: Analyzing "pip._vendor.cachecontrol.filewrapper"
+2016-10-08T15:47:45: Analyzing "pip._vendor.cachecontrol.heuristics"
+2016-10-08T15:47:45: Analyzing "pip._vendor.cachecontrol.serialize"
+2016-10-08T15:47:45: Analyzing "pip._vendor.cachecontrol.wrapper"
+2016-10-08T15:47:45: Analyzing "pip._vendor.cachecontrol._cmd"
+2016-10-08T15:47:45: Analyzing "pip._vendor.cachecontrol"
+2016-10-08T15:47:45: Analyzing "pip._vendor.cachecontrol.caches.file_cache"
+2016-10-08T15:47:45: Analyzing "pip._vendor.cachecontrol.caches.redis_cache"
+2016-10-08T15:47:45: Analyzing "pip._vendor.cachecontrol.caches"
+2016-10-08T15:47:45: Analyzing "pip._vendor.colorama.ansi"
+2016-10-08T15:47:45: Analyzing "pip._vendor.colorama.ansitowin32"
+2016-10-08T15:47:45: Analyzing "pip._vendor.colorama.initialise"
+2016-10-08T15:47:45: Analyzing "pip._vendor.colorama.win32"
+2016-10-08T15:47:45: Analyzing "pip._vendor.colorama.winterm"
+2016-10-08T15:47:45: Analyzing "pip._vendor.colorama"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib.compat"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib.database"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib.index"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib.locators"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib.manifest"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib.markers"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib.metadata"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib.resources"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib.scripts"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib.util"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib.version"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib.wheel"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib._backport.misc"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib._backport.shutil"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib._backport.sysconfig"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib._backport.tarfile"
+2016-10-08T15:47:45: Analyzing "pip._vendor.distlib._backport"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.constants"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.html5parser"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.ihatexml"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.inputstream"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.sanitizer"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.tokenizer"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.utils"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.filters.alphabeticalattributes"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.filters.inject_meta_charset"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.filters.lint"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.filters.optionaltags"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.filters.sanitizer"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.filters.whitespace"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.filters._base"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.filters"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.serializer.htmlserializer"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.serializer"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.treeadapters.sax"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.treeadapters"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.treebuilders.dom"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.treebuilders.etree"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.treebuilders.etree_lxml"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.treebuilders._base"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.treebuilders"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.treewalkers.dom"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.treewalkers.etree"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.treewalkers.genshistream"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.treewalkers.lxmletree"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.treewalkers.pulldom"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.treewalkers._base"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.treewalkers"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.trie.datrie"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.trie.py"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.trie._base"
+2016-10-08T15:47:45: Analyzing "pip._vendor.html5lib.trie"
+2016-10-08T15:47:45: Analyzing "pip._vendor.lockfile.linklockfile"
+2016-10-08T15:47:45: Analyzing "pip._vendor.lockfile.mkdirlockfile"
+2016-10-08T15:47:45: Analyzing "pip._vendor.lockfile.pidlockfile"
+2016-10-08T15:47:45: Analyzing "pip._vendor.lockfile.sqlitelockfile"
+2016-10-08T15:47:45: Analyzing "pip._vendor.lockfile.symlinklockfile"
+2016-10-08T15:47:45: Analyzing "pip._vendor.lockfile"
+2016-10-08T15:47:45: Analyzing "pip._vendor.packaging.markers"
+2016-10-08T15:47:45: Analyzing "pip._vendor.packaging.requirements"
+2016-10-08T15:47:45: Analyzing "pip._vendor.packaging.specifiers"
+2016-10-08T15:47:45: Analyzing "pip._vendor.packaging.utils"
+2016-10-08T15:47:45: Analyzing "pip._vendor.packaging.version"
+2016-10-08T15:47:45: Analyzing "pip._vendor.packaging._compat"
+2016-10-08T15:47:45: Analyzing "pip._vendor.packaging._structures"
+2016-10-08T15:47:45: Analyzing "pip._vendor.packaging.__about__"
+2016-10-08T15:47:45: Analyzing "pip._vendor.packaging"
+2016-10-08T15:47:45: Analyzing "pip._vendor.pkg_resources"
+2016-10-08T15:47:45: Analyzing "pip._vendor.progress.bar"
+2016-10-08T15:47:45: Analyzing "pip._vendor.progress.counter"
+2016-10-08T15:47:45: Analyzing "pip._vendor.progress.helpers"
+2016-10-08T15:47:45: Analyzing "pip._vendor.progress.spinner"
+2016-10-08T15:47:45: Analyzing "pip._vendor.progress"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.adapters"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.api"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.auth"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.certs"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.compat"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.cookies"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.exceptions"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.hooks"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.models"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.sessions"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.status_codes"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.structures"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.utils"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.big5freq"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.big5prober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.chardetect"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.chardistribution"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.charsetgroupprober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.charsetprober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.codingstatemachine"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.compat"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.constants"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.cp949prober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.escprober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.escsm"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.eucjpprober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.euckrfreq"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.euckrprober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.euctwfreq"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.euctwprober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.gb2312freq"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.gb2312prober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.hebrewprober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.jisfreq"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.jpcntx"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.langbulgarianmodel"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.langcyrillicmodel"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.langgreekmodel"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.langhebrewmodel"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.langhungarianmodel"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.langthaimodel"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.latin1prober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.mbcharsetprober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.mbcsgroupprober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.mbcssm"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.sbcharsetprober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.sbcsgroupprober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.sjisprober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.universaldetector"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet.utf8prober"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.chardet"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.connection"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.connectionpool"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.exceptions"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.fields"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.filepost"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.poolmanager"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.request"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.response"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3._collections"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.contrib.appengine"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.contrib.ntlmpool"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.contrib.pyopenssl"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.contrib.socks"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.contrib"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.packages.ordered_dict"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.packages.six"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.packages"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.packages.ssl_match_hostname._implementation"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.packages.ssl_match_hostname"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.util.connection"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.util.request"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.util.response"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.util.retry"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.util.ssl_"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.util.timeout"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.util.url"
+2016-10-08T15:47:45: Analyzing "pip._vendor.requests.packages.urllib3.util"
+2016-10-08T15:47:45: Starting analysis of 232 modules
+2016-10-08T15:47:53: Analysis complete
+2016-10-08T15:47:53: Saving group "D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip"
+2016-10-08T15:47:56: End of group "D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pip"
+2016-10-08T15:47:57: Deleting 0 files
+
+2016-10-08T17:02:44: Start analysis
+2016-10-08T17:02:44: [WARNING] Library was set explicitly - skipping path detection
+2016-10-08T17:02:44: IncludeModulesFromModulePath = win32com
+2016-10-08T17:02:45: Deleting 0 files
+2016-10-08T17:02:45: astropy.CallDepth = 0
+2016-10-08T17:02:45: matplotlib.CallDepth = 3
+2016-10-08T17:02:45: pandas.CallDepth = 0
+2016-10-08T17:02:45: sympy.CallDepth = 0
+2016-10-08T17:02:45: Start group "D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline" with 32 files
+2016-10-08T17:02:45: Parsing "pipeline.collector" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\collector.py")
+2016-10-08T17:02:45: Parsing "pipeline.conf" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\conf.py")
+2016-10-08T17:02:45: Parsing "pipeline.exceptions" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\exceptions.py")
+2016-10-08T17:02:45: Parsing "pipeline.finders" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\finders.py")
+2016-10-08T17:02:45: Parsing "pipeline.glob" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\glob.py")
+2016-10-08T17:02:45: Parsing "pipeline.manifest" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\manifest.py")
+2016-10-08T17:02:45: Parsing "pipeline.middleware" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\middleware.py")
+2016-10-08T17:02:45: Parsing "pipeline.packager" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\packager.py")
+2016-10-08T17:02:45: Parsing "pipeline.signals" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\signals.py")
+2016-10-08T17:02:45: Parsing "pipeline.storage" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\storage.py")
+2016-10-08T17:02:45: Parsing "pipeline.utils" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\utils.py")
+2016-10-08T17:02:45: Parsing "pipeline.views" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\views.py")
+2016-10-08T17:02:45: Parsing "pipeline" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\__init__.py")
+2016-10-08T17:02:45: Parsing "pipeline.compilers.coffee" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compilers\coffee.py")
+2016-10-08T17:02:45: Parsing "pipeline.compilers.es6" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compilers\es6.py")
+2016-10-08T17:02:45: Parsing "pipeline.compilers.less" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compilers\less.py")
+2016-10-08T17:02:45: Parsing "pipeline.compilers.livescript" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compilers\livescript.py")
+2016-10-08T17:02:45: Parsing "pipeline.compilers.sass" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compilers\sass.py")
+2016-10-08T17:02:45: Parsing "pipeline.compilers.stylus" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compilers\stylus.py")
+2016-10-08T17:02:45: Parsing "pipeline.compilers" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compilers\__init__.py")
+2016-10-08T17:02:45: Parsing "pipeline.compressors.closure" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compressors\closure.py")
+2016-10-08T17:02:45: Parsing "pipeline.compressors.cssmin" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compressors\cssmin.py")
+2016-10-08T17:02:45: Parsing "pipeline.compressors.csstidy" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compressors\csstidy.py")
+2016-10-08T17:02:45: Parsing "pipeline.compressors.jsmin" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compressors\jsmin.py")
+2016-10-08T17:02:45: Parsing "pipeline.compressors.slimit" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compressors\slimit.py")
+2016-10-08T17:02:45: Parsing "pipeline.compressors.uglifyjs" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compressors\uglifyjs.py")
+2016-10-08T17:02:45: Parsing "pipeline.compressors.yuglify" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compressors\yuglify.py")
+2016-10-08T17:02:45: Parsing "pipeline.compressors.yui" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compressors\yui.py")
+2016-10-08T17:02:45: Parsing "pipeline.compressors" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\compressors\__init__.py")
+2016-10-08T17:02:45: Parsing "pipeline.jinja2" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\jinja2\__init__.py")
+2016-10-08T17:02:45: Parsing "pipeline.templatetags.pipeline" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\templatetags\pipeline.py")
+2016-10-08T17:02:45: Parsing "pipeline.templatetags" ("D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline\templatetags\__init__.py")
+2016-10-08T17:02:45: Parsing complete
+2016-10-08T17:02:45: Analyzing "pipeline.collector"
+2016-10-08T17:02:45: Analyzing "pipeline.conf"
+2016-10-08T17:02:45: Analyzing "pipeline.exceptions"
+2016-10-08T17:02:45: Analyzing "pipeline.finders"
+2016-10-08T17:02:45: Analyzing "pipeline.glob"
+2016-10-08T17:02:45: Analyzing "pipeline.manifest"
+2016-10-08T17:02:45: Analyzing "pipeline.middleware"
+2016-10-08T17:02:45: Analyzing "pipeline.packager"
+2016-10-08T17:02:45: Analyzing "pipeline.signals"
+2016-10-08T17:02:45: Analyzing "pipeline.storage"
+2016-10-08T17:02:45: Analyzing "pipeline.utils"
+2016-10-08T17:02:45: Analyzing "pipeline.views"
+2016-10-08T17:02:45: Analyzing "pipeline"
+2016-10-08T17:02:45: Analyzing "pipeline.compilers.coffee"
+2016-10-08T17:02:45: Analyzing "pipeline.compilers.es6"
+2016-10-08T17:02:45: Analyzing "pipeline.compilers.less"
+2016-10-08T17:02:45: Analyzing "pipeline.compilers.livescript"
+2016-10-08T17:02:45: Analyzing "pipeline.compilers.sass"
+2016-10-08T17:02:45: Analyzing "pipeline.compilers.stylus"
+2016-10-08T17:02:45: Analyzing "pipeline.compilers"
+2016-10-08T17:02:45: Analyzing "pipeline.compressors.closure"
+2016-10-08T17:02:45: Analyzing "pipeline.compressors.cssmin"
+2016-10-08T17:02:45: Analyzing "pipeline.compressors.csstidy"
+2016-10-08T17:02:45: Analyzing "pipeline.compressors.jsmin"
+2016-10-08T17:02:45: Analyzing "pipeline.compressors.slimit"
+2016-10-08T17:02:45: Analyzing "pipeline.compressors.uglifyjs"
+2016-10-08T17:02:45: Analyzing "pipeline.compressors.yuglify"
+2016-10-08T17:02:45: Analyzing "pipeline.compressors.yui"
+2016-10-08T17:02:45: Analyzing "pipeline.compressors"
+2016-10-08T17:02:45: Analyzing "pipeline.jinja2"
+2016-10-08T17:02:45: Analyzing "pipeline.templatetags.pipeline"
+2016-10-08T17:02:45: Analyzing "pipeline.templatetags"
+2016-10-08T17:02:45: Starting analysis of 32 modules
+2016-10-08T17:02:49: Analysis complete
+2016-10-08T17:02:49: Saving group "D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline"
+2016-10-08T17:02:49: End of group "D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline"
+2016-10-08T17:02:50: Deleting 0 files

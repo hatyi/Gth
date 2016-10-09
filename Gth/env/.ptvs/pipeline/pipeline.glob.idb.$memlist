@@ -1,0 +1,12 @@
+magic_check
+os
+glob
+unicode_literals
+staticfiles_storage
+glob0
+glob1
+__all__
+has_magic
+iglob
+re
+fnmatch

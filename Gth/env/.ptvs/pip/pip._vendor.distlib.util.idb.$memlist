@@ -28,7 +28,7 @@ split_filename
 extract_by_key
 tarfile
 get_process_umask
-_ver_info
+HTTPSHandler
 match_hostname
 is_string_sequence
 VERSPEC
@@ -53,7 +53,7 @@ get_export_entry
 FileOperator
 UNITS
 get_resources_dests
-ensure_slash
+cache_from_source
 URLError
 splittype
 write_exports
@@ -92,7 +92,8 @@ parse_credentials
 convert_path
 configparser
 NAME_VERSION_RE
-HTTPSHandler
+_ver_info
+fsdecode
 socket_timeout
 codecs
 json
@@ -111,7 +112,7 @@ ARCHIVE_EXTENSIONS
 CSVWriter
 subprocess
 parse_name_and_version
-cache_from_source
+ensure_slash
 get_cache_base
 EventMixin
 logger

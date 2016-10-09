@@ -4,12 +4,10 @@ cgi
 collections
 codecs
 get_encoding_from_headers
-platform
 socket
 cookiejar_from_dict
 default_user_agent
 proxy_bypass
-to_key_val_list
 struct
 get_auth_from_url
 select_proxy
@@ -45,7 +43,7 @@ DEFAULT_CA_BUNDLE_PATH
 unquote
 prepend_scheme_if_needed
 builtin_str
-sys
+to_key_val_list
 dict_to_sequence
 _null3
 get_unicode_from_response
