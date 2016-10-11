@@ -11,10 +11,10 @@
                 <button type="button" data-dismiss="modal" aria-label="Close">
                     <i class="fa fa-times"></i>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Report</h4>
+                <h4 class="modal-title">Report</h4>
             </div>
             <div class="modal-body">
-                <form id="basic_info_form" method="POST">
+                <form method="POST">
                     {% csrf_token %}
                     {% render_custom_form report_form %}
                 </form>
@@ -22,6 +22,34 @@
             <div class="modal-footer">
                 <button id="basic_info_save" type="button" class="btn btn-success">Save</button>
                 <button id="basic_info_cancel" type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="input_type_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times"></i>
+                </button>
+                <h4 class="modal-title">Input type</h4>
+            </div>
+            <div class="modal-body text-center">
+                <div class="btn-group text-center" data-toggle="buttons">
+                {% for input_type in input_types %}
+                    <label class="btn btn-info {% if forloop.counter0 == 0 %}active {% endif %}">
+                        <input class="input-select-radio" type="radio" autocomplete="off" type-value="{{input_type.value}}"
+                        {% if forloop.counter0 == 0 %} checked {% endif %}>
+                        {{input_type.name}}
+                    </label>
+                {% endfor %}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="input_type_select" type="button" class="btn btn-success" data-dismiss="modal">Select</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>

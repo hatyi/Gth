@@ -88,6 +88,54 @@ class TextInputForm(forms.ModelForm):
             'description': Textarea(attrs={'cols': 80, 'rows': 5})
             }
 
+class DateInputForm(forms.ModelForm):
+    custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
+    class Meta:
+        model = DateInputModel
+        fields = [
+            'title', 'description', 'placeholder', 
+            'can_be_empty', 'can_comment', 'must_comment',
+             
+            'default_date', 
+
+            'page', 'group', 'input_type', 'page_order', 'group_order'
+        ]
+        widgets = {
+            'description': Textarea(attrs={'cols': 80, 'rows': 5})
+            }
+
+class RangeInputForm(forms.ModelForm):
+    custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
+    class Meta:
+        model = RangeInputModel
+        fields = [
+            'title', 'description',
+            'can_comment', 'must_comment',
+             
+            'default_value', 'min_value', 'max_value',
+
+            'page', 'group', 'input_type', 'page_order', 'group_order'
+        ]
+        widgets = {
+            'description': Textarea(attrs={'cols': 80, 'rows': 5})
+            }
+
+class ChoicesInputForm(forms.ModelForm):
+    custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
+    class Meta:
+        model = RangeInputModel
+        fields = [
+            'title', 'description',
+            'can_be_empty', 'can_comment', 'must_comment',
+             
+            #TODO choices here
+
+            'page', 'group', 'input_type', 'page_order', 'group_order'
+        ]
+        widgets = {
+            'description': Textarea(attrs={'cols': 80, 'rows': 5})
+            }
+
 
 class SignatureInputForm(forms.ModelForm):
     custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']

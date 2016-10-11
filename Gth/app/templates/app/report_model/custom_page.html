@@ -16,10 +16,10 @@
                 </button>
                 <ul class="dropdown-menu pull-right">
                     <li>
-                        <a><i class="fa fa-object-group"></i> Add group</a>
+                        <a class="add-group-button"><i class="fa fa-object-group"></i> Add group</a>
                     </li>
                     <li>
-                        <a><i class="fa fa-keyboard-o"></i> Add field</a>
+                        <a data-toggle="modal" data-target="#input_type_modal"><i class="fa fa-keyboard-o"></i> Add field</a>
                     </li>
                 </ul>
             </div>
@@ -37,11 +37,11 @@
                 {% for input in page.inputs %}
                 {% if input.is_group %}
                 <li input-type="group">
-                    {% render_custom_group input.input_instance page %}
+                    {% render_custom_group input.input_instance %}
                 </li>
                 {% else %}
                 <li input-type="simple">
-                    {% render_custom_input input.input_instance page %}
+                    {% render_custom_input input.input_instance %}
                 </li>
                 {% endif %}
                 {% endfor %}
@@ -63,7 +63,7 @@
                         {% with page_num_s=page.page_number|stringformat:"s" %}
                         {% with prefix=page.original|yesno:"original_page_,page_" %}
                         {% with page_id=prefix|add:page_num_s %}
-                        {% render_custom_form page.page_form page_id %}
+                        {% render_custom_form page.page_form %}
                         {% endwith %}
                         {% endwith %}
                         {% endwith %}

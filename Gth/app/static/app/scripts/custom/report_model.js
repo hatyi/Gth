@@ -179,8 +179,11 @@ $("#add_page_button").click(function () {
         $(".btn-danger.panel-button").on("click.remove_page", removePageClickHandler);
         $(".btn-info.panel-button").off("click.move_page");
         $(".btn-info.panel-button").on("click.move_page", directionClickHandler);
-        $(".page-panel #id_title").off("input.title_input");
-        $(".page-panel #id_title").on("input.title_input", titleInputHandler);
+        
+        $(".add-group-button").off("click.add_group", addGroupToPage);
+        $(".add-group-button").on("click.add_group", addGroupToPage);
+
+
         $("#loading_body").addClass("hidden");
         $("#page_body").removeClass("hidden");
         changePage(pageCount);
@@ -204,7 +207,7 @@ function removePageClickHandler() {
     if (pageCount === 0)
         return;
     if (pageCount === 1)
-        changePage(1);
+            changePage(1);
     else
         changePage(pageNumber - 1 === 0 ? 1 : pageNumber - 1);
 }
@@ -234,15 +237,6 @@ function directionClickHandler() {
     changePage(targetPosition);
 }
 
-$(".page-panel #id_title").on("input.title_input", titleInputHandler);
-function titleInputHandler() {
-    var self = $(this);
-    if(self.val())
-        $("div[page='" + page + "'] > div > div > h2").html(self.val());
-    else
-        $("div[page='" + page + "'] > div > div > h2").html("Edit title");
-}
-
 $(".page-details-button").on("click.page_details", pageDetailsClick);
 function pageDetailsClick() {
     var commonParent = $(this).closest(".page-panel");
@@ -256,3 +250,59 @@ function inputDetailsClick(){
     var modal = commonParent.children(".modal");
     modal.modal("show");
 }
+
+$(".add-group-button").on("click.add_group", addGroupToPage);
+function addGroupToPage(){
+    var page = $(this).closest(".panel");
+    canClick = false;
+    $("#page_body").addClass("hidden");
+    $("#loading_body").removeClass("hidden");
+    request("/models/get_new_group", function (result) {
+        
+        var list = page.children(".panel-body").children("ol");
+        var li = $(document.createElement("li"));
+        li.append(result);
+        list.append(li);
+
+        $(".input-remove-button").off("click.remove_input", removeInputClickHandler);
+        $(".input-remove-button").on("click.remove_input", removeInputClickHandler);
+        $(".input-details-button").off("click.input_details", inputDetailsClick);
+        $(".input-details-button").on("click.input_details", inputDetailsClick);
+        makeSortable();
+
+        $("#loading_body").addClass("hidden");
+        $("#page_body").removeClass("hidden");
+        canClick = true;
+    });
+}
+
+$("#input_type_select").click(function(){
+    var page = $(".page-panel").not(".hidden");
+    canClick = false;
+    $("#page_body").addClass("hidden");
+    $("#loading_body").removeClass("hidden");
+    var types = $(".input-select-radio"), selected = 0;
+    for (input in types) {
+        if (types.hasOwnProperty(input)) {
+            var current = $(types[input]);
+            if (current.is(":checked"))
+                selected = current.attr("type-value");
+        }
+    }
+    request("/models/get_new_input/" + selected, function (result) {
+        
+        var list = page.find(".panel-body").closest("ol").first();
+        var li = $(document.createElement("li"));
+        li.append(result);
+        list.append(li);
+
+        $(".input-remove-button").off("click.remove_input", removeInputClickHandler);
+        $(".input-remove-button").on("click.remove_input", removeInputClickHandler);
+        $(".input-details-button").off("click.input_details", inputDetailsClick);
+        $(".input-details-button").on("click.input_details", inputDetailsClick);
+
+        $("#loading_body").addClass("hidden");
+        $("#page_body").removeClass("hidden");
+        canClick = true;
+    });
+});

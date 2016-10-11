@@ -1,6 +1,6 @@
 from django.http.response import Http404
 from djables import djables_manager as manager
-from app.forms import ReportForm, PageForm, TextInputForm, InputGroupForm, SignatureInputForm
+from app.forms import ReportForm, PageForm, TextInputForm, InputGroupForm, SignatureInputForm, ChoicesInputForm, RangeInputForm, DateInputForm
 from django.db.models.query_utils import Q
 from django.shortcuts import get_object_or_404
 from app.models import Report, Page, ReportInputGroupModel, TextInputModel, ReportInputModel
@@ -48,10 +48,9 @@ def __create_forms_dict(report_model = None):
         }
     return result
 
-def get_input_data(input, page, id_tag=None):
+def get_input_data(input, id_tag=None):
     result = {
         'input':{
-            'page': page,
             'input_instance': input,
             'input_form': __get_input_form(input),
             'page_order': input.page_order,
@@ -64,10 +63,9 @@ def get_input_data(input, page, id_tag=None):
     
 
 
-def get_group_data(group, page, id_tag=None):
+def get_group_data(group, id_tag=None):
     result = {
         'group':{
-            'page': page,
             'group_instance': group,
             'group_form': InputGroupForm(instance=group),
             'page_order': group.page_order,
@@ -140,7 +138,10 @@ def __get_input_form(input_model):
     def __get_simple_form(model):
         result = {
             ReportInputModel.TEXT: lambda x: TextInputForm(instance=x),
-            ReportInputModel.SIGNATURE: lambda x: SignatureInputForm(instance=x),
+            ReportInputModel.DATE: lambda x: DateInputForm(instance=x),
+            ReportInputModel.RANGE: lambda x: RangeInputForm(instance=x),
+            ReportInputModel.CHOICES: lambda x: ChoicesInputForm(instance=x),
+            ReportInputModel.SIGNATURE: lambda x: SignatureInputForm(instance=x)
         }[model.input_type](model)
         return result
 

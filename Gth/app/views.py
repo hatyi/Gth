@@ -2,11 +2,11 @@ from django.shortcuts import render, get_object_or_404
 from django.http.response import HttpResponseRedirect, HttpResponse, Http404, JsonResponse
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
-from app.models import Profile, Report
+from app.models import Profile, Report, ReportInputModel, ReportInputGroupModel, TextInputModel, SignatureInputModel
 from djables import djables_manager as manager
 from django.db.models.query_utils import Q
-from app.forms import ReportForm, PageForm, TextInputForm
-from app.gth.edit_report import save_report, get_report, get_page_data, get_form_data
+from app.forms import ReportForm, PageForm, TextInputForm, InputGroupForm, SignatureInputForm
+from app.gth.edit_report import save_report, get_report, get_page_data, get_group_data, get_input_data
 
 @login_required
 def home(request):
@@ -47,15 +47,26 @@ def edit_report_model(request, method):
         exit = request.GET.get('exit', False)
         if exit and success:
             return HttpResponseRedirect('/models')
-        #additional logic here for no success with forms
         return JsonResponse({'succes':success})
     data = get_report(request.GET, method)
+    data['input_types'] = [{'name': x[1], 'value': x[0]} for x in ReportInputModel.TYPES]
     return render(request, 'app/edit_model.html', data)
 
 def get_new_page(request, current_page_count):
     data = get_page_data(int(current_page_count)+1)
     return render(request, 'app/report_model/custom_page.html', data)
 
-def get_new_input(request):
-    data = get_form_data(TextInputForm())
-    return render(request, 'app/report_model/custom_form.html', data)
+def get_new_group(request):
+    data = get_group_data(ReportInputGroupModel(), )
+    return render(request, 'app/report_model/custom_group.html', data)
+
+def get_new_input(request, type):
+    form = {
+            ReportInputModel.TEXT: lambda: TextInputModel(),
+            ReportInputModel.DATE: lambda: SignatureInputModel(input_type=ReportInputModel.DATE),
+            ReportInputModel.RANGE: lambda: SignatureInputModel(input_type=ReportInputModel.RANGE),
+            ReportInputModel.CHOICES: lambda: SignatureInputModel(input_type=ReportInputModel.CHOICES),
+            ReportInputModel.SIGNATURE: lambda: SignatureInputModel(input_type=ReportInputModel.SIGNATURE),
+        }[int(type)]()
+    data = get_input_data(form)
+    return render(request, 'app/report_model/custom_input.html', data)

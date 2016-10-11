@@ -20,8 +20,10 @@ urlpatterns = [
     url(r'^$', app.views.home, name='home'),
     url(r'^login$', app.views.user_login),
     url(r'^logout$', app.views.user_logout),
+    url(r'^models/get_new_group$', app.views.get_new_group),
     url(r'^models/(\w+)$', app.views.edit_report_model),
     url(r'^models/get_new_page/([0-9])$', app.views.get_new_page),
+    url(r'^models/get_new_input/([0-9])$', app.views.get_new_input),
    
    
     url(r'^', include(djables_manager.get_urls())),
