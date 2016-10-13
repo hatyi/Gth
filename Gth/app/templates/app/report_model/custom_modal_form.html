@@ -1,0 +1,31 @@
+{% load custom_form %}
+{% load static %}
+
+<div class="modal fade" id="{{modal_id}}" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times"></i>
+                </button>
+				<h4 class="modal-title">{{title}}</h4>
+			</div>
+		    <div class="modal-body">
+		        {% render_custom_form form 'modal-form-body' %}
+		        
+		        <div class="modal-form-loading hidden">
+		            <div class="text-center m-t-20">
+		                <img src="{% static 'djables/activity-indicator-dark.gif' %}" alt="loading"/>
+		            </div>
+		            <div class="text-center">
+		                <p>Processing...</p>
+		            </div>
+		        </div>
+		    </div>
+			<div class="modal-footer">
+				<button id="{{save_id}}" type="button" class="btn btn-success modal-save-button" target="{{form.MODAL_TITLE}}">Ok</button>
+				<button id="{{cancel_id}}" type="button" class="btn btn-danger modal-cancel-button">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>

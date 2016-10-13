@@ -1,7 +1,3 @@
-"""
-Definition of urls for Gth.
-"""
-
 from datetime import datetime
 from django.conf.urls import url
 import django.contrib.auth.views
@@ -16,7 +12,6 @@ from djables import djables_manager
 admin.autodiscover()
 
 urlpatterns = [
-    # Examples:
     url(r'^$', app.views.home, name='home'),
     url(r'^login$', app.views.user_login),
     url(r'^logout$', app.views.user_logout),
@@ -24,6 +19,7 @@ urlpatterns = [
     url(r'^models/(\w+)$', app.views.edit_report_model),
     url(r'^models/get_new_page/([0-9])$', app.views.get_new_page),
     url(r'^models/get_new_input/([0-9])$', app.views.get_new_input),
+    url(r'^models/validate_form/(\w+)$', app.views.validate_form),
    
    
     url(r'^', include(djables_manager.get_urls())),

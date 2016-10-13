@@ -1,7 +1,7 @@
 ﻿body {
     height: 100% !important;
     min-width: 320px!important;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 @media screen and (min-width: 992px) {
     #sideBar {

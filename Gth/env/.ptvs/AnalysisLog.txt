@@ -2911,3 +2911,8 @@ C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Micro
 2016-10-08T17:02:49: Saving group "D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline"
 2016-10-08T17:02:49: End of group "D:\Stuff\My work\BusCheck\Gth\Gth\env\Lib\site-packages\pipeline"
 2016-10-08T17:02:50: Deleting 0 files
+
+2016-10-13T20:27:59: Start analysis
+2016-10-13T20:27:59: [WARNING] Library was set explicitly - skipping path detection
+2016-10-13T20:27:59: IncludeModulesFromModulePath = win32com
+2016-10-13T20:28:00: Deleting 0 files

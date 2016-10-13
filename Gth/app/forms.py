@@ -42,6 +42,7 @@ class BusServiceForm(forms.ModelForm):
 
 
 class ReportForm(forms.ModelForm):
+    MODAL_TITLE = 'Report'
     custom_hidden_fields = False
     class Meta:
         model = Report
@@ -51,6 +52,7 @@ class ReportForm(forms.ModelForm):
             }
 
 class PageForm(forms.ModelForm):
+    MODAL_TITLE = 'Page'
     custom_hidden_fields = ['page']
     class Meta:
         model = Page
@@ -62,6 +64,7 @@ class PageForm(forms.ModelForm):
             }
 
 class InputGroupForm(forms.ModelForm):
+    MODAL_TITLE = 'Group'
     custom_hidden_fields = ['page', 'page_order']
     class Meta:
         model = ReportInputGroupModel
@@ -73,6 +76,7 @@ class InputGroupForm(forms.ModelForm):
             }
 
 class TextInputForm(forms.ModelForm):
+    MODAL_TITLE = 'Text'
     custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
     class Meta:
         model = TextInputModel
@@ -89,6 +93,7 @@ class TextInputForm(forms.ModelForm):
             }
 
 class DateInputForm(forms.ModelForm):
+    MODAL_TITLE = 'Date'
     custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
     class Meta:
         model = DateInputModel
@@ -105,6 +110,7 @@ class DateInputForm(forms.ModelForm):
             }
 
 class RangeInputForm(forms.ModelForm):
+    MODAL_TITLE = 'Range'
     custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
     class Meta:
         model = RangeInputModel
@@ -121,6 +127,7 @@ class RangeInputForm(forms.ModelForm):
             }
 
 class ChoicesInputForm(forms.ModelForm):
+    MODAL_TITLE = 'Choices'
     custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
     class Meta:
         model = RangeInputModel
@@ -138,6 +145,7 @@ class ChoicesInputForm(forms.ModelForm):
 
 
 class SignatureInputForm(forms.ModelForm):
+    MODAL_TITLE = 'Signature'
     custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
     class Meta:
         model = SignatureInputModel

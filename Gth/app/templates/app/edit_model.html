@@ -1,27 +1,6 @@
 {% extends "app/authenticated.html" %} {% load custom_form %} {% load widget_tweaks %} {% load static %} 
 {% block current_content %}
 
-<div class="modal fade" id="basic_info_modal" tabindex="-1" role="dialog">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" data-dismiss="modal" aria-label="Close">
-                    <i class="fa fa-times"></i>
-                </button>
-				<h4 class="modal-title">Report</h4>
-			</div>
-			<div class="modal-body">
-				<form method="POST">
-					{% csrf_token %} {% render_custom_form report_form %}
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button id="basic_info_save" type="button" class="btn btn-success">Save</button>
-				<button id="basic_info_cancel" type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-			</div>
-		</div>
-	</div>
-</div>
 
 <div class="modal fade" id="input_type_modal" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
@@ -36,7 +15,7 @@
 				<div class="btn-group text-center" data-toggle="buttons">
 					{% for input_type in input_types %}
 					<label class="btn btn-info {% if forloop.counter0 == 0 %}active {% endif %}">
-                        <input class="input-select-radio" type="radio" autocomplete="off" type-value="{{input_type.value}}"
+                        <input class="input-select-radio" type="radio" autocomplete="off" type-value="{{input_type.value}}" name="add_input_type_radio" 
                         {% if forloop.counter0 == 0 %} checked {% endif %}>
                         {{input_type.name}}
                     </label> {% endfor %}
@@ -55,81 +34,82 @@
 	<a class="btn btn-danger pull-right" href="/models">Back</a>
 </div>
 <div id="pages_panel" class="panel panel-primary">
-	<div class="panel-heading">
-		<div class="btn-group pull-right" data-toggle="tooltip" title="Actions">
-			<button type="button" class="btn btn-sm btn-default dropdown-toggle panel-button" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false">
-                    <i class="fa fa-bars"></i>
-                </button>
-			<ul class="dropdown-menu pull-right">
+    <div class="panel-heading">
+        <div class="btn-group pull-right" data-toggle="tooltip" title="Actions">
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle panel-button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                <i class="fa fa-bars"></i>
+            </button>
+            <ul class="dropdown-menu pull-right">
                 <li>
-                    <a data-toggle="modal" data-target="#basic_info_modal">
+                    <a data-toggle="modal" id="basic_info_modal_button">
                         <i class="fa fa-cogs"></i> Edit details
                     </a>
                 </li>
-				<li>
-					<a id="add_page_button" ><i class="fa fa-plus"></i> Add page</a>
-				</li>
-			</ul>
-		</div>
-		<h3 id="report_title" class="panel-title uppercase">{{report_instance.title}}</h3>
-	</div>
-	<div class="panel-body">
-		<div id="loading_body" class="hidden">
-			<div class="text-center m-t-20">
-				<img src="{% static 'djables/activity-indicator-dark.gif' %}" alt="loading" />
-			</div>
-			<div class="text-center">
-				<p>Processing...</p>
-			</div>
-		</div>
-		<div id="page_body">
-			<nav aria-label="Page navigation">
-				<ul class="pagination table-pagination" id="pagination_top">
-					<li>
-						<a aria-label="Previous" onclick='changePage("prev")'>
-							<span aria-hidden="true"><span class="glyphicon glyphicon-triangle-left"></span></span>
-						</a>
-					</li>
-					{% for page in pages %}
-					<li class="table-page-button page-button-{{page.page_number}}" data-page="{{page.page_number}}">
-						<a onclick='changePage("{{page.page_number}}")'>{{page.page_number}}</a>
-					</li>
-					{% endfor %}
-					<li>
-						<a aria-label="Next" onclick='changePage("next")'>
-							<span aria-hidden="true"><span class="glyphicon glyphicon-triangle-right"></span></span>
-						</a>
-					</li>
-				</ul>
-			</nav>
-			<div id="pages-outer-container">
-				<div id="pages-inner-container">
-					{% for page in pages %} {% render_custom_page page.page_number page.page_instance %} {% endfor %}
-				</div>
-			</div>
-			<nav aria-label="Page navigation">
-				<ul class="pagination table-pagination" id="pagination_bottom">
-					<li>
-						<a aria-label="Previous" onclick='changePage("prev")'>
-							<span aria-hidden="true"><span class="glyphicon glyphicon-triangle-left"></span></span>
-						</a>
-					</li>
-					{% for page in pages %}
-					<li class="table-page-button page-button-{{page.page_number}}" data-page="{{page.page_number}}">
-						<a onclick='changePage("{{page.page_number}}")'>{{page.page_number}}</a>
-					</li>
-					{% endfor %}
-					<li>
-						<a aria-label="Next" onclick='changePage("next")'>
-							<span aria-hidden="true"><span class="glyphicon glyphicon-triangle-right"></span></span>
-						</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
+                <li>
+                    <a id="add_page_button"><i class="fa fa-plus"></i> Add page</a>
+                </li>
+            </ul>
+        </div>
+        <h3 id="report_title" class="panel-title">{{report_instance.title}}</h3>
+    </div>
+    <div class="panel-body">
+        <div id="loading_body" class="hidden">
+            <div class="text-center m-t-20">
+                <img src="{% static 'djables/activity-indicator-dark.gif' %}" alt="loading"/>
+            </div>
+            <div class="text-center">
+                <p>Processing...</p>
+            </div>
+        </div>
+        <div id="page_body">
+            <nav aria-label="Page navigation">
+                <ul class="pagination table-pagination" id="pagination_top">
+                    <li>
+                        <a aria-label="Previous" onclick='changePage("prev")'>
+                            <span aria-hidden="true"><span class="glyphicon glyphicon-triangle-left"></span></span>
+                        </a>
+                    </li>
+                    {% for page in pages %}
+                    <li class="table-page-button page-button-{{page.page_number}}" data-page="{{page.page_number}}">
+                        <a onclick='changePage("{{page.page_number}}")'>{{page.page_number}}</a>
+                    </li>
+                    {% endfor %}
+                    <li>
+                        <a aria-label="Next" onclick='changePage("next")'>
+                            <span aria-hidden="true"><span class="glyphicon glyphicon-triangle-right"></span></span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div id="pages-outer-container">
+                <div id="pages-inner-container">
+                    {% for page in pages %} {% render_custom_page page.page_number page.page_instance %} {% endfor %}
+                </div>
+            </div>
+            <nav aria-label="Page navigation">
+                <ul class="pagination table-pagination" id="pagination_bottom">
+                    <li>
+                        <a aria-label="Previous" onclick='changePage("prev")'>
+                            <span aria-hidden="true"><span class="glyphicon glyphicon-triangle-left"></span></span>
+                        </a>
+                    </li>
+                    {% for page in pages %}
+                    <li class="table-page-button page-button-{{page.page_number}}" data-page="{{page.page_number}}">
+                        <a onclick='changePage("{{page.page_number}}")'>{{page.page_number}}</a>
+                    </li>
+                    {% endfor %}
+                    <li>
+                        <a aria-label="Next" onclick='changePage("next")'>
+                            <span aria-hidden="true"><span class="glyphicon glyphicon-triangle-right"></span></span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </div>
+{% render_custom_modal_form report_form 'Report' 'basic_info_modal' 'basic_info_save' 'basic_info_cancel' %}
 <a class="btn btn-success">Save and exit</a>
 <a class="btn btn-primary">Save</a>
 <a class="btn btn-danger pull-right" href="/models">Back</a> {% load staticfiles %}

@@ -1,16 +1,17 @@
 ﻿//  ---BASIC FUNCTIONS---
-var isLoading = true, pageBody = $("#page_body"), loadingBody = $("#loading_body");
+var isLoading = false, pageBody = $("#page_body"), loadingBody = $("#loading_body");
 function changeLoadingState(){
     isLoading = !isLoading;
     if(isLoading){
-        pageBody.removeClass("hidden");
-        loadingBody.addClass("hidden");
-    } else {
         pageBody.addClass("hidden");
         loadingBody.removeClass("hidden");
+    } else {
+        pageBody.removeClass("hidden");
+        loadingBody.addClass("hidden");
     }
 }
-function request(url, callback, changeState = true) {
+function request(url, callback, changeState) {
+    var state = changeState !== false;
     if(isLoading)
         return;
     var req = new XMLHttpRequest();
@@ -23,12 +24,12 @@ function request(url, callback, changeState = true) {
             } catch (e) {
                 callback(req.responseText);
             }
-            if(changeState)
+            if(state)
                 changeLoadingState();
         }
     };
     req.open("GET", url, true);
-    if(changeState)
+    if(state)
         changeLoadingState();
     req.send();
 }
@@ -50,14 +51,9 @@ function makeSortable() {
                     else
                         children.eq(e.oldIndex - 1).after(input);
 
-
-                    var removeButtons = inputRemoveButtons();
-                    var detailButtons = inputDetailButtons();
-                    
-                    removeButtons.off(inputRemoveNamespace, removeInputClickHandler);
-                    removeButtons.on(inputRemoveNamespace, removeInputClickHandler);
-                    detailButtons.off(inputDetailsNamespace, inputDetailsClick);
-                    detailButtons.on(inputDetailsNamespace, inputDetailsClick);
+                    resetClick(inputRemoveButtons(), inputRemoveNamespace, removeInputClickHandler);
+                    resetClick(inputDetailButtons(), inputDetailsNamespace, inputDetailsClickHandler);
+                    resetClick(selectInputButtons(), selectInputNamespace, selectInputClickHandler);
                 }
             });
         });
@@ -148,7 +144,12 @@ inputDetailsNamespace = "click.details_input",
 pageRemoveNamespace = "click.remove_page",
 pageDirectionNamespace = "click.direction_page",
 pageDetailsNamespace = "click.details_page",
-addGroupNamespace = "click.add_group"
+pageDuplicateNamespace= "click.duplicate_page",
+addGroupNamespace = "click.add_group",
+selectInputNamespace = "click.select_input",
+
+modalCancelNamespace = "click.cancel_modal",
+modalSaveNamespace = "click.save_modal"
 ;
 //  ---END CLICK NAMESPACES---
 
@@ -160,18 +161,28 @@ function basicInfoSaveButton(){return $("#basic_info_save");}
 function basicInfoCancelButton(){return $("#basic_info_cancel");}
 function addPageButton(){return $("#add_page_button");}
 function reportTitleItem(){return $("#report_title");}
+function inputTypeSelectButton() { return $("#input_type_select"); }
+
+function topPagination() { return $("#pagination_top"); }
+function bottomPagination() { return $("#pagination_bottom"); }
 
 function pageRemoveButtons(){return $(".page-remove-button");}
 function pageDirectionButtons(){return $(".page-direction-button");}
-function pageDetailButtons(){return $(".page-details-button");}
-function addGroupButtons(){return $(".add-group-button");}
+function pageDetailButtons() { return $(".page-details-button"); }
+function pageDuplicateButtons() { return $(".page-duplicate-button"); }
+function addGroupButtons() { return $(".page-add-group-button"); }
 
-function inputRemoveButtons(){return $(".input-remove-button");}
-function inputDetailButtons(){return $(".input-details-button");}
+function selectInputButtons() { return $(".select-input-button"); }
+function inputSelectModal() { return $("#input_type_modal"); }
+function reportDetailsModalButton() { return $("#basic_info_modal_button"); }
 
-function topPagination(){return $("#pagination_top");}
-function bottomPagination(){return $("#pagination_bottom");}
+function inputRemoveButtons() { return $(".input-remove-button"); }
+function inputDetailButtons() { return $(".input-details-button"); }
 
+function modalCancelButtons() { return $(".modal-cancel-button"); }
+function modalSaveButtons() { return $(".modal-save-button"); }
+function modalFormBody() { return $(".modal-form-body"); }
+function modalLoadingBody() { return $(".modal-form-loading"); }
 //  ---END JQUERY ELEMENTS---
 
 
@@ -183,17 +194,27 @@ window.onload = function () {
         basicInfoModal().modal("show");
 
     makeSortable();
+
     addPageButton().click(addPageClickHandler);
     resetClick(pageRemoveButtons(), pageRemoveNamespace, removePageClickHandler);
-    resetClick(inputRemoveButtons(), inputRemoveNamespace, removeInputClickHandler);
-    
+    resetClick(pageDuplicateButtons(), pageDuplicateNamespace, duplicateClickHandler);
+    resetClick(pageDirectionButtons(), pageDirectionNamespace, directionClickHandler);
     resetClick(pageDetailButtons(), pageDetailsNamespace, pageDetailsClickHandler);
+
+    inputTypeSelectButton().click(addInputClickHandler);
+    reportDetailsModalButton().click(reportDetailsClickHandler);
+    resetClick(inputRemoveButtons(), inputRemoveNamespace, removeInputClickHandler);
     resetClick(inputDetailButtons(), inputDetailsNamespace, inputDetailsClickHandler);
     
-    resetClick(directionButton(), pageDirectionNamespace, directionClickHandler);
     
     resetClick(addGroupButtons(), addGroupNamespace, addGroupClickHandler);
+    resetClick(selectInputButtons(), selectInputNamespace, selectInputClickHandler);
+
+    resetClick(modalCancelButtons(), modalCancelNamespace, modalCancelClickHandler);
+    resetClick(modalSaveButtons(), modalSaveNamespace, modalSaveClickHandler);
+
 };
+
 var firstOpen = true, saveClick = false;
 basicInfoSaveButton().click(function () {
     saveClick = true;
@@ -208,45 +229,209 @@ basicInfoModal().on("hidden.bs.modal", function () {
 
 
 
-//TODO unified logic on save and cancel click
+//  ---MODAL FORMS---
+function showModal(selector, context) {
+    if (selector.indexOf("#") !== -1)
+        $(selector).modal("show");
+    else
+        context.closest(selector).children(".modal").modal("show");
+}
+function getModalFromButton(context) {
+    return context.closest(".modal");
+}
+
+function getForm(context) {
+    var container = context.parent().prev();
+    return {
+        'container': container,
+        'form': container.children("form").first()
+    }
+}
+function reportDetailsClickHandler() {
+    showModal("#basic_info_modal");
+}
+function pageDetailsClickHandler() {
+    showModal(".page-panel", $(this));
+}
+function inputDetailsClickHandler() {
+    showModal(".input-panel-container", $(this));
+}
+
+var isModalLoading = false, currentRequest, currentForm, currentErrors;
+function modalCancelClickHandler() {
+    var self = $(this);
+    var modal = getModalFromButton(self);
+    if (isModalLoading) {
+        if (currentRequest)
+            currentRequest.abort();
+        modalFormBody().removeClass("hidden");
+        modalLoadingBody().addClass("hidden");
+        isModalLoading = false;
+    } else {
+        modal.modal("hide");
+    }
+    var tmpForm = getForm(self),
+            form = tmpForm['form'],
+            formContainer = tmpForm["container"];
+    if (currentErrors) {
+        form.remove();
+        currentForm[0].reset();
+        formContainer.append(currentForm);
+    } else {
+        form[0].reset();
+    }
+    currentForm = null;
+    currentErrors = false;
+}
+function modalSaveClickHandler() {
+    if (isLoading)
+        return;
+    var self = $(this), tmpForm = getForm(self),
+        formContainer = tmpForm['container'],
+        target = self.attr("target"), modal = getModalFromButton(self),
+        title = modal.prev().children(".panel-heading").children(".panel-title:first");
+    currentForm = tmpForm['form'];
+    isModalLoading = true;
+    modalFormBody().addClass("hidden");
+    modalLoadingBody().removeClass("hidden");
+    currentForm.ajaxSubmit({
+        type: "POST",
+        url: "validate_form/" + target,
+        success: function (result) {
+            
+            currentForm.remove();
+            formContainer.append(result.html);
+            currentErrors = !result.success;
 
 
+            modalFormBody().removeClass("hidden");
+            modalLoadingBody().addClass("hidden");
+            isModalLoading = false;
+            if (!result.success)
+                return;
+            modal.modal("hide");
+            title.html(currentForm.find("#id_title").val() /*+ "*"*/);
+            //TODO detect changes and add - * if any
 
-
-
-
-function addPageClickHandler() {
-    request("/models/get_new_page/" + pageCount, function (result) {
-        pageCount += 1;
-        $("#pages-inner-container").append(result);
-
-        var topPaginationItem = topPagination(), bottomPaginationItem = bottomPagination();
-        var topLastButton = topPaginationItem.children("li").last(), bottomLastButton = bottomPaginationItem.children("li").last();
-
-        topLastButton.remove();
-        bottomLastButton.remove();
-        var li = $(document.createElement("li"));
-        li.attr("data-page", pageCount);
-        li.addClass("page-button-" + pageCount + " table-page-button");
-        var a = $(document.createElement("a"));
-        a.html(pageCount);
-        var currentCount = pageCount;
-        a.click(function () {
-            changePage(currentCount);
-        });
-        li.append(a);
-        topPaginationItem.append(li);
-        topPaginationItem.append(topLastButton);
-        bottomPaginationItem.append(li.clone(true));
-        bottomPaginationItem.append(bottomLastButton);
-
-        resetClick(pageRemoveButtons(), pageRemoveNamespace, removePageClickHandler);
-        resetClick(pageDirectionButtons(), pageDirectionNamespace, directionClickHandler);
-        resetClick(addGroupButtons(), addGroupNamespace, addGroupClickHandler);
-
-        changePage(pageCount);
+        }, error: function (e) { console.log(e) }
     });
 }
+window.onbeforeunload = function (event) {
+    // TODO CHECK CHANGES AND CONFIRM LEAVING
+
+    return "you have unsaved changes. Are you sure you want to navigate away?";
+};
+//  ---END MODAL FORMS---
+
+
+
+
+
+//  ---INPUT---
+function addGroupClickHandler() {
+    var page = $(this).closest(".panel");
+    request("/models/get_new_group", function (result) {
+
+        var list = page.children(".panel-body").children("ol");
+        var li = $(document.createElement("li"));
+        li.append(result);
+        list.append(li);
+
+        resetClick(inputRemoveButtons(), inputRemoveNamespace, removeInputClickHandler);
+        resetClick(inputDetailButtons(), inputDetailsNamespace, inputDetailsClickHandler);
+        resetClick(modalCancelButtons(), modalCancelNamespace, modalCancelClickHandler);
+        resetClick(modalSaveButtons(), modalSaveNamespace, modalSaveClickHandler);
+        makeSortable();
+    });
+}
+
+var currentInputCallback;
+function selectInputClickHandler() {
+    inputSelectModal().modal("show");
+    var self = $(this);
+    var li = $(document.createElement("li")),
+        ol = self.attr("source") === "page"
+        ? $(".page-panel").not(".hidden").find(".panel-body").closest("ol").first()
+        : self.closest(".input-panel-container").find("ol").first();
+    currentInputCallback = function (result) {
+        li.append(result);
+        ol.append(li);
+    }
+}
+
+function addInputClickHandler() {
+    var types = $(".input-select-radio"), selected = 0;
+    for (input in types) {
+        if (types.hasOwnProperty(input)) {
+            var current = $(types[input]);
+            if (current.is(":checked"))
+                selected = current.attr("type-value");
+        }
+    }
+    request("/models/get_new_input/" + selected, function (result) {
+        if (currentInputCallback)
+            currentInputCallback(result);
+        resetClick(inputRemoveButtons(), inputRemoveNamespace, removeInputClickHandler);
+        resetClick(inputDetailButtons(), inputDetailsNamespace, inputDetailsClickHandler);
+        resetClick(modalCancelButtons(), modalCancelNamespace, modalCancelClickHandler);
+        resetClick(modalSaveButtons(), modalSaveNamespace, modalSaveClickHandler);
+        makeSortable();
+    });
+}
+function removeInputClickHandler() {
+    var parent = $(this).parents("li").eq(1);
+    parent.remove();
+}
+//  ---END INPUT---
+
+
+//  ---PAGE---
+function addPageClickHandler() {
+    request("/models/get_new_page/" + pageCount, function (result) {
+        addPageCommon(result);
+    });
+}
+function duplicateClickHandler() {
+    var page = $(this).closest(".page-panel");
+    var clone = page.clone(true);
+    clone.attr("page", pageCount + 1);
+    addPageCommon(clone);
+}
+
+function addPageCommon(pageHtml) {
+    pageCount += 1;
+    $("#pages-inner-container").append(pageHtml);
+
+    var topPaginationItem = topPagination(), bottomPaginationItem = bottomPagination();
+    var topLastButton = topPaginationItem.children("li").last(), bottomLastButton = bottomPaginationItem.children("li").last();
+
+    topLastButton.remove();
+    bottomLastButton.remove();
+    var li = $(document.createElement("li"));
+    li.attr("data-page", pageCount);
+    li.addClass("page-button-" + pageCount + " table-page-button");
+    var a = $(document.createElement("a"));
+    a.html(pageCount);
+    var currentCount = pageCount;
+    a.click(function () {
+        changePage(currentCount);
+    });
+    li.append(a);
+    topPaginationItem.append(li);
+    topPaginationItem.append(topLastButton);
+    bottomPaginationItem.append(li.clone(true));
+    bottomPaginationItem.append(bottomLastButton);
+
+    resetClick(pageRemoveButtons(), pageRemoveNamespace, removePageClickHandler);
+    resetClick(pageDirectionButtons(), pageDirectionNamespace, directionClickHandler);
+    resetClick(addGroupButtons(), addGroupNamespace, addGroupClickHandler);
+    resetClick(selectInputButtons(), selectInputNamespace, selectInputClickHandler);
+    resetClick(modalCancelButtons(), modalCancelNamespace, modalCancelClickHandler);
+    resetClick(modalSaveButtons(), modalSaveNamespace, modalSaveClickHandler);
+
+    changePage(pageCount);
+}
+
 function removePageClickHandler() {
     var pageDiv = $(this).closest(".page-panel");
     var pageNumber = parseInt(pageDiv.attr("page"));
@@ -267,15 +452,10 @@ function removePageClickHandler() {
     else
         changePage(pageNumber - 1 === 0 ? 1 : pageNumber - 1);
 }
-function removeInputClickHandler() {
-    var parent = $(this).parents("li").eq(1);
-    parent.remove();
-}
-
 function directionClickHandler() {
     var self = $(this);
     var dir = self.attr("direction");
-    var pageDiv = $(this).parent().parent().parent();
+    var pageDiv = $(this).parents("div[page]");
     var pageNumber = parseInt(pageDiv.attr("page"));
     var targetPosition;
     if (dir === "left")
@@ -288,69 +468,4 @@ function directionClickHandler() {
     pageDiv.attr("page", targetPosition);
     changePage(targetPosition);
 }
-
-function pageDetailsClickHandler() {
-    var commonParent = $(this).closest(".page-panel");
-    var modal = commonParent.children(".modal");
-    modal.modal("show");
-}
-function inputDetailsClickHandler() {
-    var commonParent = $(this).closest(".input-panel-container");
-    var modal = commonParent.children(".modal");
-    modal.modal("show");
-}
-
-function addGroupClickHandler() {
-    var page = $(this).closest(".panel");
-    canClick = false;
-    $("#page_body").addClass("hidden");
-    $("#loading_body").removeClass("hidden");
-    request("/models/get_new_group", function (result) {
-
-        var list = page.children(".panel-body").children("ol");
-        var li = $(document.createElement("li"));
-        li.append(result);
-        list.append(li);
-
-        $(".input-remove-button").off("click.remove_input", removeInputClickHandler);
-        $(".input-remove-button").on("click.remove_input", removeInputClickHandler);
-        $(".input-details-button").off(inputDetailsNamespace, inputDetailsClick);
-        $(".input-details-button").on(inputDetailsNamespace, inputDetailsClick);
-        makeSortable();
-
-        $("#loading_body").addClass("hidden");
-        $("#page_body").removeClass("hidden");
-        canClick = true;
-    });
-}
-
-$("#input_type_select").click(function () {
-    var page = $(".page-panel").not(".hidden");
-    canClick = false;
-    $("#page_body").addClass("hidden");
-    $("#loading_body").removeClass("hidden");
-    var types = $(".input-select-radio"), selected = 0;
-    for (input in types) {
-        if (types.hasOwnProperty(input)) {
-            var current = $(types[input]);
-            if (current.is(":checked"))
-                selected = current.attr("type-value");
-        }
-    }
-    request("/models/get_new_input/" + selected, function (result) {
-
-        var list = page.find(".panel-body").closest("ol").first();
-        var li = $(document.createElement("li"));
-        li.append(result);
-        list.append(li);
-
-        $(".input-remove-button").off("click.remove_input", removeInputClickHandler);
-        $(".input-remove-button").on("click.remove_input", removeInputClickHandler);
-        $(".input-details-button").off(inputDetailsNamespace, inputDetailsClick);
-        $(".input-details-button").on(inputDetailsNamespace, inputDetailsClick);
-
-        $("#loading_body").addClass("hidden");
-        $("#page_body").removeClass("hidden");
-        canClick = true;
-    });
-});
+//  ---END PAGE---

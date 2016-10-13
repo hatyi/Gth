@@ -15,31 +15,12 @@
                     </li>
                 </ul>
             </div>
-            <h3 class="panel-title">{{input.input_instance.title}} <small> - {{input.input_instance.type_as_str}}</small></h3>
+            <h3 class="panel-title">{{input.input_instance.title}} <small> - {{input.input_instance.type_as_str}}</small>
+            </h3>
         </div>
         <div class="panel-body">
             {{input.input_instance.description}}
         </div>
     </div>
-    <div class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-times"></i>
-                    </button>
-                    <h4 class="modal-title">{{input.input_instance.type_as_str}}</h4>
-                </div>
-                <div class="modal-body">
-                    <form method="POST">
-                        {% csrf_token %} {% render_custom_form input.input_form %}
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button id="basic_info_save" type="button" class="btn btn-success">Save</button>
-                    <button id="basic_info_cancel" type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% render_custom_modal_form input.input_form input.input_instance.type_as_str %}
 </div>

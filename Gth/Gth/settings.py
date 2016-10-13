@@ -162,6 +162,7 @@ PIPELINE = {
                 'bower_components/jquery/dist/jquery.min.*',
                 'bower_components/bootstrap/dist/js/bootstrap.min.js',
                 'bower_components/jquery-slimscroll/dist/jquery.slimscroll.min.js',
+                'bower_components/jquery-form/jquery.form.js',
                 'bower_components/jquery-validation/dist/jquery.validate.min.js',
                 'bower_components/jquery-validation/dist/additional-methods.min.js',
                 'bower_components/respond/dest/respond.min.js',

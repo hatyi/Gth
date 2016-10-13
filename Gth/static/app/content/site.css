@@ -1,8 +1,8 @@
 ﻿body {
     height: 100% !important;
-    overflow-x: hidden;
+    min-width: 320px!important;
+    overflow-x: auto;
 }
-
 @media screen and (min-width: 992px) {
     #sideBar {
         position: fixed;
@@ -110,4 +110,7 @@ textarea:focus {
 .panel-info > .panel-heading > h2,
 .panel-info > .panel-heading > h3 {
     color: white;
+}
+.page-panel>.panel {
+    min-height: 280px;
 }

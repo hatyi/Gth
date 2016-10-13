@@ -12,8 +12,22 @@ def render_custom_input(input_to_render):
     return get_input_data(input_to_render)
 
 @register.inclusion_tag('app/report_model/custom_form.html')
-def render_custom_form(form_to_render):    
-    return get_form_data(form_to_render)
+def render_custom_form(form_to_render, with_form_class = None):    
+    data = get_form_data(form_to_render)
+    if with_form_class:
+        data['with_form'] = True
+        data['form_class'] = with_form_class
+    return data
+
+@register.inclusion_tag('app/report_model/custom_modal_form.html')
+def render_custom_modal_form(form_to_render, title, modal_id = None, save_id = None, cancel_id = None):    
+    return {
+        'form': form_to_render,
+        'title': title,
+        'modal_id': modal_id,
+        'save_id': save_id,
+        'cancel_id': cancel_id
+        }
 
 
 @register.inclusion_tag('app/report_model/custom_page.html')

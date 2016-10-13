@@ -11,6 +11,9 @@
                         <a class="input-details-button" data-toggle="modal"><i class="fa fa-cogs"></i> Edit details</a>
                     </li>
                     <li>
+                        <a class="select-input-button" data-toggle="modal" source="group"><i class="fa fa-keyboard-o"></i> Add field</a>
+                    </li>
+                    <li>
                         <a class="input-remove-button"><i class="fa fa-times"></i> Remove from page</a>
                     </li>
                 </ul>
@@ -29,25 +32,5 @@
             </ol>
         </div>
     </div>
-    <div class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" data-dismiss="modal" aria-label="Close">
-                        <i class="fa fa-times"></i>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">Group</h4>
-                </div>
-                <div class="modal-body">
-                    <form method="POST">
-                        {% csrf_token %} {% render_custom_form group.group_form %}
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button id="basic_info_save" type="button" class="btn btn-success">Save</button>
-                    <button id="basic_info_cancel" type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% render_custom_modal_form group.group_form 'Group' %}
 </div>
