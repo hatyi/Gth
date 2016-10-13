@@ -1,0 +1,59 @@
+﻿.table-header-orderable, 
+.table-pagination > li > a,
+.table-pagination > li > a:hover,
+.table-pagination > li > a:focus,
+.table-pagination >.active>a,
+.table-pagination >.active>a:hover,
+.table-pagination >.active>a:focus,
+.search-button {
+    cursor: pointer;
+}
+.table-header:before {
+    content: attr(djable-colname);
+}
+.table-header.asc:before {
+    content: attr(djable-colname) ' ▲';
+}
+.table-header.desc:before {
+    content: attr(djable-colname) ' ▼';
+}
+.display-inline {
+    display: inline;
+}
+
+.djable-filter-inactive {
+    color: inherit;
+}
+.djable-filter-active {
+    color: rgb(159,79,68);
+}
+.djable-search-input {
+    -webkit-transition: width 0.4s ease-in-out, padding 0.2s ease-in-out!important;
+    transition: width 0.4s ease-in-out, padding 0.2s ease-in-out!important;
+}
+
+@media screen and (max-width: 991px) {
+    .djable-search-input {
+        width: 340px;
+    }
+    .djable-action-button {
+        margin-left: 5px;
+    }
+    .djable-action-button {
+        margin-left: 0;
+        margin-right: 5px;
+        margin-bottom: 10px;
+    }
+}
+@media screen and (min-width: 992px) {
+    .djable-search-input {
+        width: 40%;
+    }
+    .djable-search-input:focus {
+        width: 60%;
+    }
+    .djable-action-button {
+        float: right;
+        margin-left: 5px;
+    }
+}
