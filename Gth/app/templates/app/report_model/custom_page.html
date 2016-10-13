@@ -2,32 +2,33 @@
 <div class="{{page.first_page|yesno:'page-panel,page-panel hidden'}}" page="{{page.page_number}}">
     <div class="panel panel-primary report-page">
         <div class="panel-heading">
-            <div class="btn btn-danger btn-sm panel-button page-remove-button" data-toggle="tooltip" title="Remove page">
-                <i class="fa fa-times"></i>
-            </div>
-            <span data-toggle="tootltip" title="Edit details">
-                <button type="button" class="btn btn-default btn-sm panel-button page-details-button" data-toggle="modal">
-                    <i class="fa fa-cogs"></i>
-                </button>
-            </span>
-            <div class="btn-group pull-right" data-toggle="tooltip" title="Add field">
-                <button type="button" class="btn btn-sm btn-success dropdown-toggle panel-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-plus"></i>
+            <div class="btn-group pull-right" data-toggle="tooltip" title="Actions">
+                <button type="button" class="btn btn-sm btn-default dropdown-toggle panel-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-bars"></i>
                 </button>
                 <ul class="dropdown-menu pull-right">
                     <li>
-                        <a class="add-group-button"><i class="fa fa-object-group"></i> Add group</a>
+                        <a class="page-details-button" data-toggle="modal"><i class="fa fa-cogs"></i> Edit details</a>
                     </li>
                     <li>
                         <a data-toggle="modal" data-target="#input_type_modal"><i class="fa fa-keyboard-o"></i> Add field</a>
                     </li>
+                    <li>
+                        <a class="add-group-button"><i class="fa fa-object-group"></i> Add group</a>
+                    </li>
+                    <li>
+                        <a class="page-duplicate-button"><i class="fa fa-clone"></i> Duplicate</a>
+                    </li>
+                    <li>
+                        <a class="page-direction-button" direction="right"><i class="fa fa-angle-right"></i> Move right</a>
+                    </li>
+                    <li>
+                        <a class="page-direction-button" direction="left"><i class="fa fa-angle-left"></i> Move left</a>
+                    </li>
+                    <li>
+                        <a class="page-remove-button"><i class="fa fa-times"></i> Remove page</a>
+                    </li>
                 </ul>
-            </div>
-            <div class="btn btn-info btn-sm panel-button" direction="right" data-toggle="tooltip" title="Move page right">
-                <i class="fa fa-angle-right"></i>
-            </div>
-            <div class="btn btn-info btn-sm panel-button" direction="left" data-toggle="tooltip" title="Move page left">
-                <i class="fa fa-angle-left"></i>
             </div>
 
             <h2 class="panel-title">{{page.page_instance.title}}</h2>

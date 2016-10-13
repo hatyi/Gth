@@ -7,9 +7,11 @@ from django.db.models.query_utils import Q
 class Profile(models.Model):
     ADMIN = 0
     DRIVER = 1
+    COWORKER = 2
     ROLES = (
         (ADMIN, 'Admin'),    
         (DRIVER, 'Driver'),    
+        (COWORKER, 'Co-Worker')    
     )
     user = models.OneToOneField(User, on_delete = models.CASCADE)
     role = models.SmallIntegerField(default=DRIVER, choices=ROLES)

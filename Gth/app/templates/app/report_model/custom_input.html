@@ -2,14 +2,19 @@
 <div class="input-panel-container">
     <div class="panel panel-success simple-input-panel">
         <div class="panel-heading">
-            <button type="button" class="btn btn-danger btn-sm panel-button input-remove-button" data-toggle="tooltip" title="Remove from page">
-                <i class="fa fa-times"></i>
-            </button>
-            <span data-toggle="tooltip" title="Edit details">
-                <button type="button" class="btn btn-sm btn-default panel-button input-details-button" data-toggle="modal">
-                    <i class="fa fa-cogs"></i>
+            <div class="btn-group pull-right" data-toggle="tooltip" title="Actions">
+                <button type="button" class="btn btn-sm btn-default dropdown-toggle panel-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-bars"></i>
                 </button>
-            </span>
+                <ul class="dropdown-menu pull-right">
+                    <li>
+                        <a class="input-details-button" data-toggle="modal"><i class="fa fa-cogs"></i> Edit details</a>
+                    </li>
+                    <li>
+                        <a class="input-remove-button"><i class="fa fa-times"></i> Remove from page</a>
+                    </li>
+                </ul>
+            </div>
             <h3 class="panel-title">{{input.input_instance.title}} <small> - {{input.input_instance.type_as_str}}</small></h3>
         </div>
         <div class="panel-body">

@@ -1,0 +1,35 @@
+﻿.panel-button {
+    margin-top: -1px;
+    margin-right: 5px;
+    float: right;
+}
+.btn-xs.panel-button{
+    margin-top: 5px;
+    float: right;
+}
+.panel-button>a,
+.panel-button>i,
+.panel-button>a>i {
+    color: white;
+}
+.panel-button.btn-default>i{
+    color:#222;
+}
+.panel-title {
+    margin-bottom: 6px;
+    margin-top: 5px;
+}
+#pages-outer-container {
+    overflow: hidden;
+    width: 100%;
+}
+/*#pages-inner-container {
+    width: 100%;
+    overflow: hidden;
+}*/
+.btn-primary-white>a {
+    color: white;
+}
+.report-page {
+    margin-top: 20px;
+}
