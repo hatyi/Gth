@@ -8,55 +8,41 @@
                     callback(reply);
             } catch (e) {
                 callback(req.responseText);
-            } 
-            
+            }
+
         }
     };
     req.open("GET", url, true);
     req.send();
 }
 
+//JQUERY ELEMENTS
+function basicInfoModal(){return $("#basic_info_modal");}
+function basicInfoSaveButton(){return $("#basic_info_save");}
+function basicInfoCancelButton(){return $("#basic_info_cancel");}
+function inputRemoveButtons(){return $(".input-remove-button");}
+function inputDetailButtons(){return $(".input-details-button");}
+
+//CLICK NAMESPACES
+var 
+inputRemoveNamespace = "click.remove_input",
+inputDetailsNamespace = "click.details_input";
+
+
 window.onload = function () {
-    if(window.location.pathname.indexOf("new") !== -1)
-        $("#basic_info_modal").modal("show");
-
-    var firstOpen = true, saveClick = false, reportTitle, reportDescription;
-    $("#basic_info_save").click(function () {
-        reportTitle = null;
-        reportDescription = null;
-        var title = $("#id_title").val();
-        if (!title)
-            return;
-        $("#report_title").html(title);
-        $("#basic_info_modal").modal("hide");
-        saveClick = true;
-    });
-    $("#basic_info_cancel").click(function() {
-        if (reportTitle && reportDescription) {
-            $("#id_title").val(reportTitle);
-            $("#id_description").val(reportDescription);
-        }
-    });
-    $("#basic_info_modal").on("shown.bs.modal", function() {
-        reportTitle = $("#id_title").val();
-        reportDescription = $("#id_description").val();
-    });
-    $("#basic_info_modal").on("hidden.bs.modal", function() {
-        if (window.location.pathname.indexOf("new") !== -1 && firstOpen && !saveClick) {
-            window.location = "/models";
-        }
-        firstOpen = false;
-    });
-
+    if (window.location.pathname.indexOf("new") !== -1)
+        basicInfoModal().modal("show");
     makeSortable();
 };
 
+
+
 function makeSortable() {
     Array.prototype.forEach.call(
-        document.getElementsByClassName("sortable-list"), function(item) {
+        document.getElementsByClassName("sortable-list"), function (item) {
             Sortable.create(item, {
                 group: { name: "sortable", pull: true, put: true },
-                onAdd: function(e) {
+                onAdd: function (e) {
                     var from = $(e.from), to = $(e.to), input = $(e.item);
                     if (!(!from.hasClass("sortable-list-group")
                         && to.hasClass("sortable-list-group")
@@ -68,14 +54,46 @@ function makeSortable() {
                         children.eq(e.oldIndex).after(input);
                     else
                         children.eq(e.oldIndex - 1).after(input);
-                    $(".input-remove-button").off("click.remove_input", removeInputClickHandler);
-                    $(".input-remove-button").on("click.remove_input", removeInputClickHandler);
-                    $(".input-details-button").off("click.input_details", inputDetailsClick);
-                    $(".input-details-button").on("click.input_details", inputDetailsClick);
+                    var removeButtons = inputRemoveButtons();
+                    var detailButtons = inputRemoveButtons();
+                    
+                    removeButtons.off(inputRemoveNamespace, removeInputClickHandler);
+                    removeButtons.on(inputRemoveNamespace, removeInputClickHandler);
+                    detailButtons.off(inputDetailsNamespace, inputDetailsClick);
+                    detailButtons.on(inputDetailsNamespace, inputDetailsClick);
                 }
             });
         });
 }
+
+var firstOpen = true, saveClick = false, reportTitle, reportDescription;
+basicInfoSaveButton().click(function () {
+    reportTitle = null;
+    reportDescription = null;
+    var title = $("#id_title").val();
+    if (!title)
+        return;
+    $("#report_title").html(title);
+    $("#basic_info_modal").modal("hide");
+    saveClick = true;
+});
+basicInfoCancelButton().click(function () {
+    if (reportTitle && reportDescription) {
+        $("#id_title").val(reportTitle);
+        $("#id_description").val(reportDescription);
+    }
+});
+$("#basic_info_modal").on("shown.bs.modal", function () {
+    reportTitle = $("#id_title").val();
+    reportDescription = $("#id_description").val();
+});
+$("#basic_info_modal").on("hidden.bs.modal", function () {
+    if (window.location.pathname.indexOf("new") !== -1 && firstOpen && !saveClick) {
+        window.location = "/models";
+    }
+    firstOpen = false;
+});
+
 
 
 //PAGING
@@ -104,7 +122,7 @@ function changePage(param) {
     $(".page-panel").each(function () {
         var self = $(this);
         var inc = 1 / animSpeed;
-        
+
         if ($(this).attr("page") !== "" + targetPage) {
             self.addClass("hidden");
         } else {
@@ -133,7 +151,7 @@ function changePage(param) {
             visiblePages.push(i);
         }
     } else {
-        for (i = page - Math.floor(pagesVisible / 2) ; i <= page + Math.floor(pagesVisible / 2) ; i++) {
+        for (i = page - Math.floor(pagesVisible / 2); i <= page + Math.floor(pagesVisible / 2); i++) {
             visiblePages.push(i);
         }
     }
@@ -179,7 +197,7 @@ $("#add_page_button").click(function () {
         $(".btn-danger.panel-button").on("click.remove_page", removePageClickHandler);
         $(".btn-info.panel-button").off("click.move_page");
         $(".btn-info.panel-button").on("click.move_page", directionClickHandler);
-        
+
         $(".add-group-button").off("click.add_group", addGroupToPage);
         $(".add-group-button").on("click.add_group", addGroupToPage);
 
@@ -207,7 +225,7 @@ function removePageClickHandler() {
     if (pageCount === 0)
         return;
     if (pageCount === 1)
-            changePage(1);
+        changePage(1);
     else
         changePage(pageNumber - 1 === 0 ? 1 : pageNumber - 1);
 }
@@ -215,7 +233,7 @@ function removePageClickHandler() {
 
 $(".input-remove-button").on("click.remove_input", removeInputClickHandler);
 function removeInputClickHandler() {
-    var parent = $(this).closest("li");
+    var parent = $(this).parents("li").eq(1);
     parent.remove();
 }
 
@@ -244,21 +262,21 @@ function pageDetailsClick() {
     modal.modal("show");
 }
 
-$(".input-details-button").on("click.input_details", inputDetailsClick);
-function inputDetailsClick(){
+$(".input-details-button").on(inputDetailsNamespace, inputDetailsClick);
+function inputDetailsClick() {
     var commonParent = $(this).closest(".input-panel-container");
     var modal = commonParent.children(".modal");
     modal.modal("show");
 }
 
 $(".add-group-button").on("click.add_group", addGroupToPage);
-function addGroupToPage(){
+function addGroupToPage() {
     var page = $(this).closest(".panel");
     canClick = false;
     $("#page_body").addClass("hidden");
     $("#loading_body").removeClass("hidden");
     request("/models/get_new_group", function (result) {
-        
+
         var list = page.children(".panel-body").children("ol");
         var li = $(document.createElement("li"));
         li.append(result);
@@ -266,8 +284,8 @@ function addGroupToPage(){
 
         $(".input-remove-button").off("click.remove_input", removeInputClickHandler);
         $(".input-remove-button").on("click.remove_input", removeInputClickHandler);
-        $(".input-details-button").off("click.input_details", inputDetailsClick);
-        $(".input-details-button").on("click.input_details", inputDetailsClick);
+        $(".input-details-button").off(inputDetailsNamespace, inputDetailsClick);
+        $(".input-details-button").on(inputDetailsNamespace, inputDetailsClick);
         makeSortable();
 
         $("#loading_body").addClass("hidden");
@@ -276,7 +294,7 @@ function addGroupToPage(){
     });
 }
 
-$("#input_type_select").click(function(){
+$("#input_type_select").click(function () {
     var page = $(".page-panel").not(".hidden");
     canClick = false;
     $("#page_body").addClass("hidden");
@@ -290,7 +308,7 @@ $("#input_type_select").click(function(){
         }
     }
     request("/models/get_new_input/" + selected, function (result) {
-        
+
         var list = page.find(".panel-body").closest("ol").first();
         var li = $(document.createElement("li"));
         li.append(result);
@@ -298,8 +316,8 @@ $("#input_type_select").click(function(){
 
         $(".input-remove-button").off("click.remove_input", removeInputClickHandler);
         $(".input-remove-button").on("click.remove_input", removeInputClickHandler);
-        $(".input-details-button").off("click.input_details", inputDetailsClick);
-        $(".input-details-button").on("click.input_details", inputDetailsClick);
+        $(".input-details-button").off(inputDetailsNamespace, inputDetailsClick);
+        $(".input-details-button").on(inputDetailsNamespace, inputDetailsClick);
 
         $("#loading_body").addClass("hidden");
         $("#page_body").removeClass("hidden");
