@@ -40,7 +40,7 @@
                 <div class="btn-group text-center" data-toggle="buttons">
                 {% for input_type in input_types %}
                     <label class="btn btn-info {% if forloop.counter0 == 0 %}active {% endif %}">
-                        <input class="input-select-radio" type="radio" autocomplete="off" type-value="{{input_type.value}}"
+                        <input class="input-select-radio" type="radio" name="add_input_type_radio" autocomplete="off" type-value="{{input_type.value}}"
                         {% if forloop.counter0 == 0 %} checked {% endif %}>
                         {{input_type.name}}
                     </label>
