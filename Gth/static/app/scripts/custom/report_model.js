@@ -310,11 +310,17 @@ function modalSaveClickHandler() {
             if (!result.success)
                 return;
             modal.modal("hide");
-            title.html(currentForm.find("#id_title").val() + "*");
+            title.html(currentForm.find("#id_title").val() /*+ "*"*/);
+            //TODO detect changes and add - * if any
 
         }, error: function (e) { console.log(e) }
     });
 }
+window.onbeforeunload = function (event) {
+    // TODO CHECK CHANGES AND CONFIRM LEAVING
+
+    return "you have unsaved changes. Are you sure you want to navigate away?";
+};
 //  ---END MODAL FORMS---
 
 
