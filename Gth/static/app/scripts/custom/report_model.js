@@ -276,6 +276,7 @@ function modalCancelClickHandler() {
     if (currentErrors) {
         form.remove();
         currentForm[0].reset();
+        currentForm.removeClass("hidden");
         formContainer.append(currentForm);
     } else {
         form[0].reset();
