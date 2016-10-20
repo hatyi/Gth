@@ -5,13 +5,10 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" data-dismiss="modal" aria-label="Close">
-                    <i class="fa fa-times"></i>
-                </button>
 				<h4 class="modal-title">{{title}}</h4>
 			</div>
 		    <div class="modal-body">
-		        {% render_custom_form form 'modal-form-body' %}
+		        {% render_custom_form form 'modal-form-body' title %}
 		        
 		        <div class="modal-form-loading hidden">
 		            <div class="text-center m-t-20">

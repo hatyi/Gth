@@ -149,6 +149,7 @@
     <Content Include="app\static\djables\djables.css" />
     <Content Include="app\static\djables\djables.js" />
     <Content Include="app\templates\app\authenticated.html" />
+    <Content Include="app\templates\app\report_model\choices_table.html" />
     <Content Include="app\templates\app\report_model\custom_modal_form.html" />
     <Content Include="app\templates\app\report_model\custom_group.html" />
     <Content Include="app\templates\app\report_model\custom_input.html" />

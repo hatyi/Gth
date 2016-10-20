@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^models/get_new_page/([0-9])$', app.views.get_new_page),
     url(r'^models/get_new_input/([0-9])$', app.views.get_new_input),
     url(r'^models/validate_form/(\w+)$', app.views.validate_form),
+    url(r'^models/choices/([\w-]+)$', app.views.get_choices_for_group),
    
    
     url(r'^', include(djables_manager.get_urls())),

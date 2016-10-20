@@ -149,7 +149,10 @@ addGroupNamespace = "click.add_group",
 selectInputNamespace = "click.select_input",
 
 modalCancelNamespace = "click.cancel_modal",
-modalSaveNamespace = "click.save_modal"
+modalSaveNamespace = "click.save_modal",
+
+choicesSelectNamespace = "change.choice_change",
+addChoiceButtonNamespace = "click.add_choice"
 ;
 //  ---END CLICK NAMESPACES---
 
@@ -163,6 +166,7 @@ function addPageButton(){return $("#add_page_button");}
 function reportTitleItem(){return $("#report_title");}
 function inputTypeSelectButton() { return $("#input_type_select"); }
 
+
 function topPagination() { return $("#pagination_top"); }
 function bottomPagination() { return $("#pagination_bottom"); }
 
@@ -174,7 +178,7 @@ function addGroupButtons() { return $(".page-add-group-button"); }
 
 function selectInputButtons() { return $(".select-input-button"); }
 function inputSelectModal() { return $("#input_type_modal"); }
-function reportDetailsModalButton() { return $("#basic_info_modal_button"); }
+function reportDetailsModalButton() { return $(".report-details-button"); }
 
 function inputRemoveButtons() { return $(".input-remove-button"); }
 function inputDetailButtons() { return $(".input-details-button"); }
@@ -183,6 +187,9 @@ function modalCancelButtons() { return $(".modal-cancel-button"); }
 function modalSaveButtons() { return $(".modal-save-button"); }
 function modalFormBody() { return $(".modal-form-body"); }
 function modalLoadingBody() { return $(".modal-form-loading"); }
+
+function choicesSelects() { return $("select[id=id_choices]");}
+function addChoiceModelRowButton() { return $("#add_choice_model_row_button"); }
 //  ---END JQUERY ELEMENTS---
 
 
@@ -213,6 +220,9 @@ window.onload = function () {
     resetClick(modalCancelButtons(), modalCancelNamespace, modalCancelClickHandler);
     resetClick(modalSaveButtons(), modalSaveNamespace, modalSaveClickHandler);
 
+    resetClick(choicesSelects(), choicesSelectNamespace, choicesSelectionHandler);
+    resetClick(addChoiceModelRowButton(), addChoiceButtonNamespace, addChoiceButtonClickHandler);
+
 };
 
 var firstOpen = true, saveClick = false;
@@ -231,10 +241,11 @@ basicInfoModal().on("hidden.bs.modal", function () {
 
 //  ---MODAL FORMS---
 function showModal(selector, context) {
+    var options = { show: true, keyboard: false, backdrop: "static" };
     if (selector.indexOf("#") !== -1)
-        $(selector).modal("show");
+        $(selector).modal(options);
     else
-        context.closest(selector).children(".modal").modal("show");
+        context.closest(selector).children(".modal").modal(options);
 }
 function getModalFromButton(context) {
     return context.closest(".modal");
@@ -247,14 +258,17 @@ function getForm(context) {
         'form': container.children("form").first()
     }
 }
-function reportDetailsClickHandler() {
-    showModal("#basic_info_modal");
+function reportDetailsClickHandler(e) {
+    if (e.target.nodeName !== "I" && e.target.nodeName !== "BUTTON")
+        showModal("#basic_info_modal");
 }
-function pageDetailsClickHandler() {
-    showModal(".page-panel", $(this));
+function pageDetailsClickHandler(e) {
+    if (e.target.nodeName !== "I" && e.target.nodeName !== "BUTTON")
+        showModal(".page-panel", $(this));
 }
-function inputDetailsClickHandler() {
-    showModal(".input-panel-container", $(this));
+function inputDetailsClickHandler(e) {
+    if (e.target.nodeName !== "I" && e.target.nodeName !== "BUTTON")
+        showModal(".input-panel-container", $(this));
 }
 
 var isModalLoading = false, currentRequest, currentForm, currentErrors;
@@ -284,6 +298,16 @@ function modalCancelClickHandler() {
     currentForm = null;
     currentErrors = false;
 }
+function changeModalLoadingState() {
+    isModalLoading = !isModalLoading;
+    if (isModalLoading) {
+        modalFormBody().addClass("hidden");
+        modalLoadingBody().removeClass("hidden");
+    } else {
+        modalFormBody().removeClass("hidden");
+        modalLoadingBody().addClass("hidden");
+    }
+}
 function modalSaveClickHandler() {
     if (isLoading)
         return;
@@ -292,9 +316,7 @@ function modalSaveClickHandler() {
         target = self.attr("target"), modal = getModalFromButton(self),
         title = modal.prev().children(".panel-heading").children(".panel-title:first");
     currentForm = tmpForm['form'];
-    isModalLoading = true;
-    modalFormBody().addClass("hidden");
-    modalLoadingBody().removeClass("hidden");
+    changeModalLoadingState();
     currentForm.ajaxSubmit({
         type: "POST",
         url: "validate_form/" + target,
@@ -302,26 +324,49 @@ function modalSaveClickHandler() {
             
             currentForm.remove();
             formContainer.append(result.html);
+            resetClick(choicesSelects(), choicesSelectNamespace, choicesSelectionHandler);
             currentErrors = !result.success;
 
 
-            modalFormBody().removeClass("hidden");
-            modalLoadingBody().addClass("hidden");
-            isModalLoading = false;
+            changeModalLoadingState();
             if (!result.success)
                 return;
             modal.modal("hide");
-            title.html(currentForm.find("#id_title").val() /*+ "*"*/);
-            //TODO detect changes and add - * if any
-
+            var type = formContainer.prev().find(".modal-title").html(), 
+                nextTitleText = currentForm.find("#id_title").val();
+            if (type !== "Report" && type !== "Page")
+                type = "<small> - " + type + "</small>";
+            else
+                type = "";
+            title.html(nextTitleText + type);
         }, error: function (e) { console.log(e) }
     });
 }
-window.onbeforeunload = function (event) {
+
+var currentSelection;
+function choicesSelectionHandler() {
+    var self = $(this);
+    var name = self.find(":selected").text();
+    if (name === "---------") {
+        currentSelection.remove();
+        return;
+    }
+    request("/models/choices/" + name, function (result) {
+        if (currentSelection)
+            currentSelection.remove();
+        currentSelection = $(result);
+        self.parent().append(currentSelection);
+    }, false);
+};
+function addChoiceButtonClickHandler() {
+    
+}
+
+//window.onbeforeunload = function (event) {
     // TODO CHECK CHANGES AND CONFIRM LEAVING
 
-    return "you have unsaved changes. Are you sure you want to navigate away?";
-};
+    //return "you have unsaved changes. Are you sure you want to navigate away?";
+//};
 //  ---END MODAL FORMS---
 
 
@@ -337,11 +382,13 @@ function addGroupClickHandler() {
         var li = $(document.createElement("li"));
         li.append(result);
         list.append(li);
+        $(result).find(".panel-header").click();
 
         resetClick(inputRemoveButtons(), inputRemoveNamespace, removeInputClickHandler);
         resetClick(inputDetailButtons(), inputDetailsNamespace, inputDetailsClickHandler);
         resetClick(modalCancelButtons(), modalCancelNamespace, modalCancelClickHandler);
         resetClick(modalSaveButtons(), modalSaveNamespace, modalSaveClickHandler);
+        resetClick(selectInputButtons(), selectInputNamespace, selectInputClickHandler);
         makeSortable();
     });
 }
@@ -357,6 +404,7 @@ function selectInputClickHandler() {
     currentInputCallback = function (result) {
         li.append(result);
         ol.append(li);
+        $(result).find(".panel-header").click();
     }
 }
 
@@ -376,6 +424,7 @@ function addInputClickHandler() {
         resetClick(inputDetailButtons(), inputDetailsNamespace, inputDetailsClickHandler);
         resetClick(modalCancelButtons(), modalCancelNamespace, modalCancelClickHandler);
         resetClick(modalSaveButtons(), modalSaveNamespace, modalSaveClickHandler);
+        resetClick(choicesSelects(), choicesSelectNamespace, choicesSelectionHandler);
         makeSortable();
     });
 }
@@ -470,3 +519,149 @@ function directionClickHandler() {
     changePage(targetPosition);
 }
 //  ---END PAGE---
+
+
+// ---SAVE REPORT---
+
+$(".save-report-button").click(function () {
+    changeLoadingState();
+
+    var all = $("form"), prefixes = [];
+    var prefixForm = function (form, prefix) {
+        var clone = form.clone(true);
+        var inputs = clone.find("input, textarea");
+        inputs.each(function() {
+            var current = $(this).attr("name");
+            $(this).attr("id", prefix + "-" + current);
+            $(this).attr("name", prefix + "-" + current);
+        });
+        clone.attr("prefix", prefix);
+        prefixes.push(prefix);
+        return clone.serialize();
+    };
+    var reportForm = all.filter("form[data-value=Report]"),
+        pageForms = all.filter("form[data-value=Page]"),
+        inputForms = all.not("form[data-value=Page]").not("form[data-value=Report]"),
+        //result = {
+        //    report_form: prefixForm(reportForm, "report_"),
+        //    pages:[]
+        //};
+        result = [prefixForm(reportForm, "report_")];
+
+    
+
+    pageForms.each(function() {
+        var page = $(this).closest(".page-panel"),
+            pageNumber = $(this).closest(".page-panel").attr("page");
+            //data = {
+            //    page_form: prefixForm($(this), "page_" + pageNumber),
+            //    //page_number: pageNumber,
+            //    inputs: []
+            //};
+        result.push(prefixForm($(this), "page_" + pageNumber));
+
+        inputForms.each(function () {
+            var self = $(this);
+            if (!$.contains(page[0], self[0]))
+                return;
+            var list = self.closest("ol.sortable-list"),
+                isGroup = list.hasClass("sortable-list-group"),
+                listItems = list.children(),
+                index = 0, currentForm, i;
+            for (i = 1; i < listItems.length; i++) {
+                if ($.contains(listItems[i], self[0])) {
+                    index = i;
+                    break;
+                }
+            }
+            index += 1;
+            if (self.attr("data-value") !== "Group") {
+                if (isGroup) {
+                    //currentData["group_order"] = index;
+                    var pageList = list.parent().closest("ol.sortable-list"),
+                        pageChildren = pageList.children(),
+                        currentIndex = 0;
+                    for (i = 1; i < pageChildren.length; i++) {
+                        if ($.contains(pageChildren[i], self[0])) {
+                            currentIndex = i;
+                            break;
+                        }
+                    }
+                    currentIndex += 1;
+                    //currentData["target_groups_page_order"] = currentIndex;
+                    currentForm = prefixForm(self,
+                        "page_" + pageNumber + "group_" + currentIndex + "input_" + index + "_" + self.attr("data-value"));
+                } else {
+                    //currentData["page_order"] = index;
+                    currentForm = prefixForm(self,
+                        "page_" + pageNumber + "input_" + index + "_" + self.attr("data-value"));
+                }
+            } else {
+                currentForm = prefixForm(self,
+                    "page_" + pageNumber + "group_" + index);
+                    //{
+                    //group_form: ,
+                    //page_order: index
+                //}
+            }
+            result.push(currentForm);
+            //data.inputs.push(currentForm);
+        });
+        //result.push(data);
+        //result.pages.push(data);
+    });
+
+    //var form = $(document.createElement("form"));
+    //form.attr("type", "POST");
+    //$("input").not(".dont-submit-this-input").each(function() {
+    //    form.append($(this).clone());
+    //});
+    //console.log(form);
+    //form.ajaxSubmit({ type: "post" });
+    result.push("prefixes=" + prefixes.join("|"));
+    result = result.join("&");
+    console.log(result);
+    $.ajax({
+        type: "POST",
+        url: window.location.path,
+        data: result,
+        success: function (requestResult) {
+            console.log(requestResult);
+            changeLoadingState();
+        },
+        error: function (requestResult) {
+            console.log(requestResult);
+             changeLoadingState();
+         },
+        datatype: "json"
+    });
+});
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie("csrftoken");
+
+// ---END SAVE REPORT---

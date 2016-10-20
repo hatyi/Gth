@@ -1,0 +1,76 @@
+﻿{% load widget_tweaks %}
+{% if choices %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="container-fluid m-t-10 m-b-10">
+        <div class="row m-b-10 m-t-10">
+            <button id="add_choice_model_row_button" type="button" class="btn btn-xs btn-success pull-left"><i class="fa fa-plus"></i></button>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="table-header choices-table-header">Name</th>
+                        <th class="table-header choices-table-header">Color</th>
+                        <th class="table-header choices-table-header">Score</th>
+                        <th class="table-header choices-table-header">Default</th>
+                        <th class="table-header choices-table-header">Bad answer</th>
+                        <th class="table-header choices-table-header">Must comment</th>
+                        <th class="table-header choices-table-header">Remove</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for choice_form in choices %}
+                    <tr class="choice-model-row">
+                        <td>
+                            {% render_field choice_form.name class+="input-sm choice-name-input" %}
+                        </td>
+                        <td>
+                            {% render_field choice_form.color class+="input-sm color-input" %}
+                        </td>
+                        <td>
+                            {% render_field choice_form.value class+="input-sm small-integer-input" %}
+                        </td>
+                        <td>
+                            <input class="form-control centered choice-model-radio" id="id_is_default_answer" name="is_default_answer" type="radio" checked="{% if choice_form.is_default_answer.data %} checked {%endif%}">
+                        </td>
+                        <td>
+                            {% render_field choice_form.is_bad_answer class+="form-control centered" %}
+                        </td>
+                        <td>
+                            {% render_field choice_form.must_comment class+="form-control centered" %}
+                        </td>
+                        <td class="text-center">
+                            <button type="button" class="btn btn-sm btn-default"><i class="fa fa-times"></i></button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<script>
+    var allRadios = document.getElementsByName('is_default_answer');
+    var booRadio;
+    var x = 0;
+    for (x = 0; x < allRadios.length; x++) {
+
+        allRadios[x].onclick = function() {
+
+            if (booRadio === this) {
+                this.checked = false;
+                booRadio = null;
+            } else {
+                booRadio = this;
+            }
+        }
+    };
+</script>
+
+{% endif %}

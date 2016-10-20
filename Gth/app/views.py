@@ -6,7 +6,7 @@ from app.models import Profile, Report, ReportInputModel, ReportInputGroupModel,
 from djables import djables_manager as manager
 from django.db.models.query_utils import Q
 from app.forms import ReportForm, PageForm, TextInputForm, InputGroupForm, SignatureInputForm, DateInputForm, RangeInputForm, ChoicesInputForm
-from app.gth.edit_report import save_report, get_report, get_page_data, get_group_data, get_input_data, get_form_data
+from app.gth.edit_report import save_report, get_report, get_page_data, get_group_data, get_input_data, get_form_data, get_choices_data
 from django.template import loader
 
 @login_required
@@ -27,7 +27,8 @@ def user_login(request):
     password = request.POST.get('password', '')
     user = authenticate(username=username, password=password)
 
-    if (user and user.profile and user.is_active and user.profile.role == Profile.ADMIN):
+    if (user and user.profile and user.is_active and 
+        (user.profile.role == Profile.ADMIN or user.profile.role == Profile.COWORKER)):
         login(request, user)
         return HttpResponseRedirect(redirect_to_next)
     return render(request, 'app/login.html', {
@@ -43,12 +44,13 @@ def user_logout(request):
 
 @login_required
 def edit_report_model(request, method):
-    #if request.method == "POST":
-    #    success = save_report(request.POST, method)
-    #    exit = request.GET.get('exit', False)
-    #    if exit and success:
-    #        return HttpResponseRedirect('/models')
-    #    return JsonResponse({'succes':success})
+    if request.method == "POST":
+        if method == manager.new:
+            success = save_report(request.POST)
+        else:
+            success = save_report(request.POST, Report.objects.get(id=request.GET.get('id')))
+
+        return JsonResponse({'succes':success})
     data = get_report(request.GET, method)
     data['input_types'] = [{'name': x[1], 'value': x[0]} for x in ReportInputModel.TYPES]
     return render(request, 'app/edit_model.html', data)
@@ -66,13 +68,13 @@ def get_new_group(request):
 @login_required
 def get_new_input(request, type):
     model = {
-            ReportInputModel.TEXT: lambda: TextInputModel(),
+            ReportInputModel.TEXT: lambda: TextInputModel(input_type=ReportInputModel.TEXT),
             ReportInputModel.DATE: lambda: DateInputModel(input_type=ReportInputModel.DATE),
-            ReportInputModel.RANGE: lambda: RangeInputModel(input_type=ReportInputModel.RANGE),
+            ReportInputModel.SLIDER: lambda: RangeInputModel(input_type=ReportInputModel.SLIDER),
             ReportInputModel.CHOICES: lambda: ChoicesInputModel(input_type=ReportInputModel.CHOICES),
             ReportInputModel.SIGNATURE: lambda: SignatureInputModel(input_type=ReportInputModel.SIGNATURE),
         }[int(type)]()
-    data = get_input_data(model)
+    data = get_input_data(model, input_type=int(type))
     return render(request, 'app/report_model/custom_input.html', data)
 
 
@@ -96,3 +98,8 @@ def validate_form(request, title):
     template = loader.get_template('app/report_model/custom_form.html')
     html_response = template.render(data, request)
     return JsonResponse({'html': html_response, 'success': form.is_valid()})
+
+@login_required
+def get_choices_for_group(request, name):
+    data = get_choices_data(name)
+    return render(request, 'app/report_model/choices_table.html', data)

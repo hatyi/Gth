@@ -24,7 +24,7 @@ class UserForm(forms.ModelForm):
 class BusForm(forms.ModelForm):
     class Meta:
         model = Bus
-        fields = ['bus_id', 'plate_number', 'motor_number']
+        fields = ['bus_id', 'plate_number', 'motor_number', 'bus_image']
 
 
 class BusServiceForm(forms.ModelForm):
@@ -37,6 +37,10 @@ class BusServiceForm(forms.ModelForm):
 
 
 
+class ChoiceModelForm(forms.ModelForm):
+    class Meta:
+        model = ChoiceModel
+        fields = ['name', 'color', 'value', 'is_default_answer', 'is_bad_answer', 'must_comment']
 
 
 
@@ -46,47 +50,38 @@ class ReportForm(forms.ModelForm):
     custom_hidden_fields = False
     class Meta:
         model = Report
-        fields = ['title', 'description']
+        fields = ['title', 'description', 'needs_bus', 'needs_user_data']
         widgets = {
             'description': Textarea(attrs={'cols': 80, 'rows': 5})
             }
 
 class PageForm(forms.ModelForm):
     MODAL_TITLE = 'Page'
-    custom_hidden_fields = ['page']
     class Meta:
         model = Page
-        fields = ['title', 'description', 
-                  #special
-                  'page']
+        fields = ['title', 'description']
         widgets = {
             'description': Textarea(attrs={'cols': 80, 'rows': 5})
             }
 
 class InputGroupForm(forms.ModelForm):
     MODAL_TITLE = 'Group'
-    custom_hidden_fields = ['page', 'page_order']
     class Meta:
         model = ReportInputGroupModel
-        fields = ['title', 'description', 
-                  #special
-                  'page', 'page_order']
+        fields = ['title', 'description']
         widgets = {
             'description': Textarea(attrs={'cols': 80, 'rows': 5})
             }
 
 class TextInputForm(forms.ModelForm):
     MODAL_TITLE = 'Text'
-    custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
     class Meta:
         model = TextInputModel
         fields = [
             'title', 'description', 'placeholder', 
             'can_be_empty', 'can_comment', 'must_comment',
              
-            'default_text', 
-
-            'page', 'group', 'input_type', 'page_order', 'group_order'
+            'default_text'
         ]
         widgets = {
             'description': Textarea(attrs={'cols': 80, 'rows': 5})
@@ -94,16 +89,13 @@ class TextInputForm(forms.ModelForm):
 
 class DateInputForm(forms.ModelForm):
     MODAL_TITLE = 'Date'
-    custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
     class Meta:
         model = DateInputModel
         fields = [
             'title', 'description', 'placeholder', 
             'can_be_empty', 'can_comment', 'must_comment',
              
-            'default_date', 
-
-            'page', 'group', 'input_type', 'page_order', 'group_order'
+            'default_date'
         ]
         widgets = {
             'description': Textarea(attrs={'cols': 80, 'rows': 5})
@@ -111,16 +103,13 @@ class DateInputForm(forms.ModelForm):
 
 class RangeInputForm(forms.ModelForm):
     MODAL_TITLE = 'Range'
-    custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
     class Meta:
         model = RangeInputModel
         fields = [
             'title', 'description',
             'can_comment', 'must_comment',
              
-            'default_value', 'min_value', 'max_value',
-
-            'page', 'group', 'input_type', 'page_order', 'group_order'
+            'default_value', 'min_value', 'max_value', 'increment'
         ]
         widgets = {
             'description': Textarea(attrs={'cols': 80, 'rows': 5})
@@ -128,16 +117,13 @@ class RangeInputForm(forms.ModelForm):
 
 class ChoicesInputForm(forms.ModelForm):
     MODAL_TITLE = 'Choices'
-    custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
     class Meta:
-        model = RangeInputModel
+        model = ChoicesInputModel
         fields = [
             'title', 'description',
             'can_be_empty', 'can_comment', 'must_comment',
              
-            #TODO choices here
-
-            'page', 'group', 'input_type', 'page_order', 'group_order'
+            'choices'
         ]
         widgets = {
             'description': Textarea(attrs={'cols': 80, 'rows': 5})
@@ -146,16 +132,13 @@ class ChoicesInputForm(forms.ModelForm):
 
 class SignatureInputForm(forms.ModelForm):
     MODAL_TITLE = 'Signature'
-    custom_hidden_fields = ['page', 'group', 'page_order', 'group_order', 'input_type']
     class Meta:
         model = SignatureInputModel
         fields = [
             'title', 'description', 'placeholder', 
             'can_be_empty', 'can_comment', 'must_comment', 
 
-            'default_typed_signature', 
-
-            'page', 'group', 'input_type', 'page_order', 'group_order'
+            'default_typed_signature'
         ]
         widgets = {
             'description': Textarea(attrs={'cols': 80, 'rows': 5})

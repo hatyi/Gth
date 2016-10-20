@@ -148,7 +148,6 @@ PIPELINE = {
                 'bower_components/font-awesome/css/font-awesome.min.*',
                 'bower_components/select2/dist/css/select2.min.css',
                 'bower_components/simple-line-icons/css/simple-line-icons.css',
-
             ),
             'output_filename': 'css/libs.min.css',
             'extra_context': {
@@ -169,9 +168,12 @@ PIPELINE = {
                 'bower_components/respond/dest/respond.matchmedia.addListener.min.js',
                 'bower_components/select2/dist/js/select2.full.min.js',
                 'bower_components/Sortable/Sortable.min.js',
+                'bower_components/jquery-ui-jquery-ui.min.js'
 
             ),
             'output_filename': 'scripts/libs.min.js',
         }
     }
 }
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../app/uploads/')
+MEDIA_URL = 'uploads/'

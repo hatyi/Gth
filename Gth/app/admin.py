@@ -3,9 +3,13 @@ from app.models import *
 
 
 admin.site.register(Profile)
+admin.site.register(FileData)
+admin.site.register(BusDriver)
 
 admin.site.register(Comment)
-admin.site.register(FileUpload)
+admin.site.register(CommentFileUpload)
+
+admin.site.register(ChoiceGroup)
 admin.site.register(ChoiceModel)
 
 admin.site.register(Report)

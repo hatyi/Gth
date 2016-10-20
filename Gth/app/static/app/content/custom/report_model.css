@@ -23,13 +23,29 @@
     overflow: hidden;
     width: 100%;
 }
-/*#pages-inner-container {
-    width: 100%;
-    overflow: hidden;
-}*/
 .btn-primary-white>a {
     color: white;
 }
 .report-page {
     margin-top: 20px;
+}
+th.choices-table-header {
+    font-weight: 500!important;
+    font-size: 11px!important;
+}
+
+h2[class*="-details-button"],
+h3[class*="-details-button"] {
+    cursor: pointer;
+    display: inline-block;
+}
+.choice-name-input {
+    max-width: 125px;
+    
+}
+.color-input {
+    max-width: 80px;
+}
+.small-integer-input {
+    max-width: 50px;
 }

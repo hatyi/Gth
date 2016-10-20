@@ -60,7 +60,13 @@
 .input-panel-container {
     cursor: pointer;
 }
-.form-control[type="checkbox"] {
+.centered {
+    height: 25px;
+    width: 25px;
+    margin-left: auto!important;
+    margin-right: auto!important;
+}
+.form-control[type="checkbox"]:not(.centered) {
     height: 25px;
     width: 25px;
     float: right;
@@ -113,4 +119,7 @@ textarea:focus {
 }
 .page-panel>.panel {
     min-height: 280px;
+}
+.table-header-center {
+    text-align: center;
 }
