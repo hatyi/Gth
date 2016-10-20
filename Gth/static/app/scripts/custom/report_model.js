@@ -426,7 +426,7 @@ function addInputClickHandler() {
         resetClick(modalSaveButtons(), modalSaveNamespace, modalSaveClickHandler);
         resetClick(choicesSelects(), choicesSelectNamespace, choicesSelectionHandler);
         makeSortable();
-    });
+    }, false);
 }
 function removeInputClickHandler() {
     var parent = $(this).parents("li").eq(1);

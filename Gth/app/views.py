@@ -37,6 +37,19 @@ def user_login(request):
         'username': username
         })
 
+def driver_login(request):
+    if request.method != "POST":
+        raise Http404()
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    user = authenticate(username=username, password=password)
+
+    if (user and user.profile and user.is_active and 
+        user.profile.role == Profile.DRIVER):
+        login(request, user)
+        return JsonResponse({'user': user})
+    raise Http404()
+
 
 def user_logout(request):
     logout(request)

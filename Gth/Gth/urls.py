@@ -14,6 +14,7 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^$', app.views.home, name='home'),
     url(r'^login$', app.views.user_login),
+    url(r'^driverlogin$', app.views.user_login),
     url(r'^logout$', app.views.user_logout),
     url(r'^models/get_new_group$', app.views.get_new_group),
     url(r'^models/(\w+)$', app.views.edit_report_model),
